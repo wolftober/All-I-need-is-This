@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class SafeManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public int coins = 500;
+
+    public void takeCoins(int amount)
     {
-        
+        coins -= amount;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void addCoins(int amount)
     {
-        
+        coins += amount;
     }
 }
