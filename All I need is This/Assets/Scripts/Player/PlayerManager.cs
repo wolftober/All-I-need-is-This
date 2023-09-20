@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+    // CONFIGURABLES
     public float health = 200f;
+
+    public GameObject safe;
 
     public void takeDamage(float ammount)
     {
@@ -18,5 +21,11 @@ public class PlayerManager : MonoBehaviour
     public void die()
     {
         Debug.Log("Player was killed...");
+    }
+
+    public void returnToSafe(int coins)
+    {
+        SafeManager safem = safe.GetComponent<SafeManager>();
+        safem.addCoins(coins);
     }
 }

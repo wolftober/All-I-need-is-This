@@ -16,6 +16,7 @@ public class EnemyScript : MonoBehaviour
     public Transform safe; // to get the safe's pos
     public GameObject safeObj; // to return money to safe if red dude is caught
     public GameObject CoinSprite; // to display coins on top of red dude when he steals
+    public GameObject coinDropPrefab;
 
     public void takeDamage(float amount)
     {
@@ -28,11 +29,12 @@ public class EnemyScript : MonoBehaviour
 
     public void die()
     {
-        // if red dude dies while he has taken coins, those coins will be returned
+        // if red dude dies while he has taken coins, those coins will be dropped on the ground
+        // for the player to pick them up
         if (hasTakenCoins == true)
         {
-            SafeManager safem = safeObj.GetComponent<SafeManager>();
-            safem.addCoins(takeAmount);
+            // spawns the coindrop prefab into the scene at the red dude's position
+            Instantiate(coinDropPrefab, transform.position, transform.rotation);
             Destroy(gameObject);
         }
         else
@@ -86,7 +88,7 @@ public class EnemyScript : MonoBehaviour
         if (safemanager != null && hasTakenCoins == false)
         {
             hasTakenCoins = true;
-            CoinSprite.active = true;
+            CoinSprite.SetActive(true);
             safemanager.takeCoins(takeAmount);
         }
     }
