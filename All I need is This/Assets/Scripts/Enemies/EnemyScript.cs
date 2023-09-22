@@ -16,7 +16,9 @@ public class EnemyScript : MonoBehaviour
     public Transform safe; // to get the safe's pos
     public GameObject safeObj; // to return money to safe if red dude is caught
     public GameObject CoinSprite; // to display coins on top of red dude when he steals
-    public GameObject coinDropPrefab;
+    public GameObject coinDropPrefab; // to spawn in the coin drop when red dude
+
+    public GameObject enemyManagerObj;
 
     public void takeDamage(float amount)
     {
@@ -69,6 +71,19 @@ public class EnemyScript : MonoBehaviour
         else
         {
             // red dude will try to go back to base where he will despawn
+
+            // calls the enemy manager object script to obtain a destination position
+            BaseManager basem = enemyManagerObj.GetComponent<BaseManager>();
+            Vector3 targetPosition = basem.getTargetPosition(transform.position);
+
+            if (transform.position == targetPosition)
+            {
+                // this occurs when enemy reaches the base
+                Destroy(gameObject);
+            }
+
+            float step = moveSpeed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
         }
     }
 
