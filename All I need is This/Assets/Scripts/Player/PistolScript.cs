@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PistolScript : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class PistolScript : MonoBehaviour
     public GameObject bulletPrefab;
     public int magazineSize = 6;
     public int currentAmmo = 6;
+    public float reloadTime; // will be implemented later
+
+    public GameObject ammoText;
 
     void Update()
     {
@@ -18,12 +22,14 @@ public class PistolScript : MonoBehaviour
             if (currentAmmo > 1)
             {
                 currentAmmo--;
+                updateUI();
                 Shoot();
             }
             else if (currentAmmo == 1)
             {
                 // shoot and reload
                 currentAmmo--;
+                updateUI();
                 Shoot();
                 Reload();
             }
@@ -45,5 +51,17 @@ public class PistolScript : MonoBehaviour
     {
         Debug.Log("instant reload...");
         currentAmmo = magazineSize;
+        updateUI();
+    }
+
+    private void Start()
+    {
+        updateUI();
+    }
+
+    void updateUI()
+    {
+        TextMeshProUGUI txt = ammoText.GetComponent<TMPro.TextMeshProUGUI>();
+        txt.text = "Ammo : " + currentAmmo + "/" + magazineSize;
     }
 }
