@@ -27,6 +27,9 @@ public class Bullet : MonoBehaviour
             enemyscript.takeDamage(damage);
         }
 
-        Destroy(gameObject);
+        if (!hitinfo.CompareTag("Coins"))
+        {
+            Destroy(gameObject);
+        }
     }
 }
