@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RoundManager : MonoBehaviour
 {
+    public GameObject spawnedEnemies;
+
     // the spawn locations, basic
     public Vector3 spawn1 = new Vector3(1, 0, 0);
     public Vector3 spawn2 = new Vector3(0, 1, 0);
@@ -26,6 +28,7 @@ public class RoundManager : MonoBehaviour
     public float enemyHealthAddition = 0f; // prob not utilized yet
 
     int currentPointIndex = 0;
+    int enemiesLeft;
 
     // returns a spawn location for the enemy to originate
     // will be made more advanced later
@@ -61,13 +64,49 @@ public class RoundManager : MonoBehaviour
 
         return shuffledList;
     }
-
-    void spawnEnemy(Vector3 spawnPoint)
+    
+    // spawns enemies based on
+    void spawnEnemies()
     {
-        //Debug.Log("Spawning Enemy at point : " + spawnPoint);
-        GameObject newreddude = Instantiate(redDude, spawnPoint, Quaternion.identity);
-        newreddude.SetActive(true);
-        // this is where the red dude's health would be increased
+        int count = 1;
+
+        while (count <= numberOfEnemies)
+        {
+            //Debug.Log("Spawning Enemy at point : " + spawnPoint);
+            GameObject newreddude = Instantiate(redDude, getSpawnPoint(), Quaternion.identity, spawnedEnemies.transform);
+            newreddude.SetActive(true);
+            // this is where the red dude's health would be increased
+
+            count++;
+        }
+    }
+
+    // adds to the configuration settings of the round to make it harder
+    void makeRoundMoreDifficult()
+    {
+        // ex : enemycount = 5 * round number
+    }
+
+    // should make future round more diffult and open shop
+    void intermission()
+    {
+        Debug.Log("Entered Intermission...");
+        makeRoundMoreDifficult();
+    }
+
+    public void startRound()
+    {
+        spawnEnemies();
+    }
+
+    public void checkEnemyCount()
+    {
+        enemiesLeft--;
+
+        if (enemiesLeft == 0)
+        {
+            intermission();
+        }
     }
 
     void Start()
@@ -78,13 +117,10 @@ public class RoundManager : MonoBehaviour
         pointList.Add(spawn3);
         pointList.Add(spawn4);
 
+        // initialize other stuff
+        enemiesLeft = numberOfEnemies;
+
         // the actual round cycle
-        int count = 1;
-        // only spawning set num of enemies for now
-        while (count <= numberOfEnemies)
-        {
-            spawnEnemy(getSpawnPoint());
-            count++;
-        }
+        startRound();
     }
 }

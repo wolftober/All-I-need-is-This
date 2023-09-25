@@ -29,8 +29,11 @@ public class EnemyScript : MonoBehaviour
         }
     }
 
+    // IMPORTANT : sends message to round manager telling it to check its enemy left count
     public void die()
     {
+        RoundManager rm = enemyManagerObj.GetComponent<RoundManager>();
+
         // if red dude dies while he has taken coins, those coins will be dropped on the ground
         // for the player to pick them up
         if (hasTakenCoins == true)
@@ -38,10 +41,12 @@ public class EnemyScript : MonoBehaviour
             // spawns the coindrop prefab into the scene at the red dude's position
             Instantiate(coinDropPrefab, transform.position, transform.rotation);
             Destroy(gameObject);
+            rm.checkEnemyCount();
         }
         else
         {
             Destroy(gameObject);
+            rm.checkEnemyCount();
         }
     }
 
