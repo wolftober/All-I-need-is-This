@@ -13,10 +13,14 @@ public class PistolScript : MonoBehaviour
 
     public GameObject ammoText;
 
+    // IMPORTANT : script will consult the round manager to see if in intermission so that input is not registered
+    public GameObject enemyManagerObject;
+    RoundManager rm;
+
     void Update()
     {
         // When left mouse button is pressed
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && rm.canFire)
         {
             // will reload after player uses last boolet to keep sanity
             if (currentAmmo > 1)
@@ -56,6 +60,7 @@ public class PistolScript : MonoBehaviour
 
     private void Start()
     {
+        rm = enemyManagerObject.GetComponent<RoundManager>();
         updateUI();
     }
 

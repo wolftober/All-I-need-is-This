@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class RoundManager : MonoBehaviour
 {
@@ -15,10 +16,13 @@ public class RoundManager : MonoBehaviour
     List<Vector3> pointList = new List<Vector3>();
 
     // the current round
-    public int round = 1;
+    public int round = 0;
 
     // the ENEMIES
     public GameObject redDude;
+
+    // for gun scripts
+    public bool canFire = true;
 
     // the things that change as current round number increases
     // the INITIAL SETTINGS
@@ -29,6 +33,10 @@ public class RoundManager : MonoBehaviour
 
     int currentPointIndex = 0;
     int enemiesLeft;
+
+    // UI
+    public GameObject intermissionPanel;
+    public GameObject roundCount;
 
     // returns a spawn location for the enemy to originate
     // will be made more advanced later
@@ -65,7 +73,8 @@ public class RoundManager : MonoBehaviour
         return shuffledList;
     }
     
-    // spawns enemies based on
+    // spawns enemies based on number of enemies set for the round
+    // no current rate of spawn set meaning all enemies spawn at once
     void spawnEnemies()
     {
         int count = 1;
@@ -85,17 +94,41 @@ public class RoundManager : MonoBehaviour
     void makeRoundMoreDifficult()
     {
         // ex : enemycount = 5 * round number
+
+        // reinitializing the 'enemiesLeft' variable after changes to the settings
+        enemiesLeft = numberOfEnemies;
     }
 
     // should make future round more diffult and open shop
     void intermission()
     {
+        canFire = false;
         Debug.Log("Entered Intermission...");
         makeRoundMoreDifficult();
+
+        // stop time, might become its own function
+        Time.timeScale = 0;
+
+        // open up the intermission / shop panel
+        intermissionPanel.SetActive(true);
     }
 
+    // this is what the intermission panel is calling to start next round
     public void startRound()
     {
+        // make player able to shoot again
+        canFire = true;
+
+        // add 1 to the round count
+        round = round + 1;
+        roundCount.GetComponent<TextMeshProUGUI>().text = "Round : " + round.ToString();
+
+        // unfreeze the game if its frozen
+        if (Time.timeScale == 0)
+        {
+            Time.timeScale = 1;
+        }
+
         spawnEnemies();
     }
 

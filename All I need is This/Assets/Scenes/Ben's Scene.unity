@@ -472,6 +472,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IntermissionObject: {fileID: 415533218}
+  enemyManagerObject: {fileID: 1035339418}
+  rm: {fileID: 0}
   button_Continue: {fileID: 29355872}
 --- !u!1 &493322754
 GameObject:
@@ -1520,7 +1522,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Round : 1'
+  m_text: 'Round : 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1763,12 +1765,15 @@ MonoBehaviour:
   spawn2: {x: -22.6, y: -0.1, z: -0.160564}
   spawn3: {x: 22.2, y: -0.1, z: -0.160564}
   spawn4: {x: -0.1, y: -22.9, z: -0.160564}
-  round: 1
+  round: 0
   redDude: {fileID: 3133003962949811127}
+  canFire: 1
   numberOfEnemies: 5
   bossWave: 0
   spawnCooldown: 1
   enemyHealthAddition: 0
+  intermissionPanel: {fileID: 415533218}
+  roundCount: {fileID: 977882288}
 --- !u!1 &1388334568
 GameObject:
   m_ObjectHideFlags: 0
@@ -2796,6 +2801,7 @@ MonoBehaviour:
   currentAmmo: 6
   reloadTime: 0
   ammoText: {fileID: 493322754}
+  enemyManagerObject: {fileID: 1035339418}
 --- !u!1 &1977359229
 GameObject:
   m_ObjectHideFlags: 0
