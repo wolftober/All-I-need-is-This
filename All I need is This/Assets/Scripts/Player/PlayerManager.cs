@@ -11,6 +11,9 @@ public class PlayerManager : MonoBehaviour
     public GameObject healthBar;
     public GameObject safe;
 
+    // UI
+    public GameObject gameOverPanel;
+
     public void takeDamage(float ammount)
     {
         health -= ammount;
@@ -25,9 +28,18 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    /* 
+     * Might need this to reverse the effects of player's death
+     * 1. stop time with timescale
+     * 2. make the game over panel pop up
+     * 3. set the player's gameobject to be unactive
+    */
     public void die()
     {
         Debug.Log("Player was killed...");
+        Time.timeScale = 0;
+        gameOverPanel.SetActive(true);
+        gameObject.SetActive(false);
     }
 
     public void returnToSafe(int coins)

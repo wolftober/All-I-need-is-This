@@ -1099,6 +1099,8 @@ MonoBehaviour:
   health: 200
   healthBar: {fileID: 1437775292}
   safe: {fileID: 2116817937}
+  spawnedEnemies: {fileID: 1792693583}
+  gameOverPanel: {fileID: 1627861726}
 --- !u!1 &814412399
 GameObject:
   m_ObjectHideFlags: 0

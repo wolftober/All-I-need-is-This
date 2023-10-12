@@ -28,8 +28,8 @@ public class RoundManager : MonoBehaviour
     // the INITIAL SETTINGS
     public int numberOfEnemies = 5;
     public bool bossWave = false; // not utilized yet
-    public float spawnCooldown = 1f;
-    public float enemyHealthAddition = 0f; // prob not utilized yet
+    public float spawnCooldown = 1f; // probably not utilized yet
+    public float enemyHealthAddition = 0f; // also probably not utilized yet
 
     int currentPointIndex = 0;
     int enemiesLeft;
@@ -93,7 +93,8 @@ public class RoundManager : MonoBehaviour
     // adds to the configuration settings of the round to make it harder
     void makeRoundMoreDifficult()
     {
-        // ex : enemycount = 5 * round number
+        // increasing enemy count (by 1 for now)
+        numberOfEnemies++;
 
         // reinitializing the 'enemiesLeft' variable after changes to the settings
         enemiesLeft = numberOfEnemies;
