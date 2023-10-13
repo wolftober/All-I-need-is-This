@@ -97,7 +97,7 @@ public class EnemyScript : MonoBehaviour
             if (transform.position == targetPosition)
             {
                 // this occurs when enemy reaches the base
-                Destroy(gameObject);
+                die();
             }
 
             float step = moveSpeed * Time.deltaTime;

@@ -137,7 +137,9 @@ public class RoundManager : MonoBehaviour
     {
         enemiesLeft--;
 
-        if (enemiesLeft == 0)
+        // Debug.Log(enemiesLeft + " to go.");
+
+        if (enemiesLeft <= 0)
         {
             intermission();
         }
