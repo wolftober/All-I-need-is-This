@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyScript : MonoBehaviour
 {
     // customizables
     public float health = 100f;
+    public float maxHealth = 100f;
     public float moveSpeed = 2f;
     public float damage = 10f;
     public int takeAmount = 10;
@@ -19,10 +21,21 @@ public class EnemyScript : MonoBehaviour
     public GameObject coinDropPrefab; // to spawn in the coin drop when red dude
 
     public GameObject enemyManagerObj;
+    [SerializeField] EnemyHealthBar healthBar;
+
+    private void Start()
+    {
+        healthBar.UpdateHealthBar(health, maxHealth);
+    }
+    private void Awake() 
+    {
+        healthBar = GetComponentInChildren<EnemyHealthBar>();
+    }
 
     public void takeDamage(float amount)
     {
         health -= amount;
+        healthBar.UpdateHealthBar(health, maxHealth);
         if (health <= 0)
         {
             die();
