@@ -21,13 +21,33 @@ public class Bullet : MonoBehaviour
         // <Script Name> name = hitinfo.GetComponent<<Script Name>>();
         // if (name != null) { name.takedamage(dmg) }
 
-        EnemyScript enemyscript = hitinfo.GetComponent<EnemyScript>();
-        if (enemyscript != null)
+        if (hitinfo.CompareTag("Enemy"))
         {
-            enemyscript.takeDamage(damage);
-        }
+            EnemyScript enemyscript = hitinfo.GetComponent<EnemyScript>();
+            if (enemyscript != null)
+            {
+                enemyscript.takeDamage(damage);
+            }
 
-        if (!hitinfo.CompareTag("Coins"))
+            if (!hitinfo.CompareTag("Coins"))
+            {
+                Destroy(gameObject);
+            }
+        }
+        else if (hitinfo.CompareTag("Boss"))
+        {
+            BossScript bossscript = hitinfo.GetComponent<BossScript>();
+            if (bossscript != null)
+            {
+                bossscript.takeDamage(damage);
+            }
+
+            if (!hitinfo.CompareTag("Coins"))
+            {
+                Destroy(gameObject);
+            }
+        }
+        else
         {
             Destroy(gameObject);
         }
