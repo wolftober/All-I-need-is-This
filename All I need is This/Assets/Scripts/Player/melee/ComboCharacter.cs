@@ -6,13 +6,14 @@ public class ComboCharacter : MonoBehaviour
 {
     private StateMachine meleeStateMachine;
     [SerializeField] public Collider2D hitbox;
-    // Start is called before the first frame update
+    [SerializeField] public GameObject Hiteffect;
+    
     void Start()
     {
         meleeStateMachine = GetComponent<StateMachine>();
     }
 
-    // Update is called once per frame
+   
     void Update()
     {
         if(Input.GetMouseButton(0) && meleeStateMachine.CurrentState.GetType() == typeof(IdleCombatState)){
