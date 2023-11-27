@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 6f;
     public Rigidbody2D rigidbody;
+    public Animator animator;
 
     Vector2 movement;
     
@@ -17,6 +18,10 @@ public class PlayerMovement : MonoBehaviour
         // left is -1, right is 1, no action is 0
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+
+        // animations getting animated
+        animator.SetFloat("speedVert", movement.y);
+        animator.SetFloat("speedHoriz", movement.x);
     }
 
     // USE THIS for PHYSICS related stuff
