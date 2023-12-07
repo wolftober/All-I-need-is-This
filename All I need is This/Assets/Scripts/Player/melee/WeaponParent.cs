@@ -5,11 +5,14 @@ using UnityEngine;
 public class WeaponParent : MonoBehaviour
 {
     public SpriteRenderer characterRenderer, weaponRenderer;
-    public Vector2 Pointerpos { get; set; }
+    public Vector2 PointerPosition { get; set; }
+    public Animator animator;
+    public float delay = 0.3f;
+    private bool attackBlocked;
 
     private void Update()
     {
-        Vector2 direction = (Pointerpos - (Vector2)transform.position).normalized;
+        Vector2 direction = (PointerPosition - (Vector2)transform.position).normalized;
         transform.right = direction;
 
         Vector2 scale = transform.localScale;
@@ -30,5 +33,21 @@ public class WeaponParent : MonoBehaviour
         {
             weaponRenderer.sortingOrder = characterRenderer.sortingOrder + 1;
         }
+    }
+
+    public void Attack()
+    {
+        if (attackBlocked)
+            return;
+        animator.SetTrigger("Attack");
+        attackBlocked = true;
+        StartCoroutine(DelayedAttack());
+        Debug.Log("Weapon attacking!");
+    }
+
+    private IEnumerator DelayedAttack()
+    {
+        yield return new WaitForSeconds(delay);
+        attackBlocked = false;
     }
 }

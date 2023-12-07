@@ -19,6 +19,6 @@ public class FaceMouse : MonoBehaviour
             mousePos.y - transform.position.y
         );
 
-        transform.up = direction;
+       // transform.up = direction;
     }
 }

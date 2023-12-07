@@ -10,9 +10,18 @@ public class PlayerManager : MonoBehaviour
 
     public GameObject healthBar;
     public GameObject safe;
+    private Vector2 PointerInput;
 
+    private WeaponParent weaponParent;
+    // private FaceMouse pointerPos;
     // UI
     public GameObject gameOverPanel;
+
+    private void Awake()
+    {
+        weaponParent = GetComponentInChildren<WeaponParent>();
+        // pointerPos = GetComponent<FaceMouse>();
+    }
 
     public void takeDamage(float ammount)
     {
@@ -54,5 +63,25 @@ public class PlayerManager : MonoBehaviour
         Slider healthSlider = healthBar.GetComponent<Slider>();
         healthSlider.maxValue = health;
         healthSlider.value = health;
+    }
+
+    private void PerformAttack()
+    {
+        weaponParent.Attack();
+    }
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+            PerformAttack();
+        PointerInput = GetPointerInput();
+        weaponParent.PointerPosition = PointerInput;
+    }
+
+    private Vector2 GetPointerInput()
+    {
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = Camera.main.nearClipPlane;
+        return Camera.main.ScreenToWorldPoint(mousePos);
     }
 }
