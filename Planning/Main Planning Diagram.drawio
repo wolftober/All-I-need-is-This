@@ -1,0 +1,73 @@
+<mxfile host="app.diagrams.net" modified="2023-12-13T06:40:23.259Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="NW7RPC04WrZV2cqcT7f2" version="22.1.8" type="device">
+  <diagram name="Page-1" id="x563TLz-NPzJe32KwRk2">
+    <mxGraphModel dx="1105" dy="663" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="RsPl30L16Qw-1QHuEMrh-1" value="&lt;b&gt;&lt;font style=&quot;font-size: 40px;&quot;&gt;OOP Structures&lt;/font&gt;&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="315" y="60" width="220" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="RsPl30L16Qw-1QHuEMrh-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="RsPl30L16Qw-1QHuEMrh-2" target="RsPl30L16Qw-1QHuEMrh-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RsPl30L16Qw-1QHuEMrh-2" value="Main Sword Class" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="200" width="250" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="RsPl30L16Qw-1QHuEMrh-4" value="&lt;b&gt;Class Variables&lt;/b&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="RsPl30L16Qw-1QHuEMrh-2">
+          <mxGeometry y="40" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="RsPl30L16Qw-1QHuEMrh-7" value="&lt;ul&gt;&lt;li&gt;Damage&lt;/li&gt;&lt;li&gt;Cooldown&lt;/li&gt;&lt;li&gt;Range&lt;/li&gt;&lt;li&gt;...&lt;/li&gt;&lt;/ul&gt;" style="text;strokeColor=none;fillColor=none;html=1;whiteSpace=wrap;verticalAlign=middle;overflow=hidden;" vertex="1" parent="RsPl30L16Qw-1QHuEMrh-2">
+          <mxGeometry x="-5" y="60" width="125" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="RsPl30L16Qw-1QHuEMrh-28" value="&lt;b&gt;Functions&lt;/b&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="RsPl30L16Qw-1QHuEMrh-2">
+          <mxGeometry x="140" y="40" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="RsPl30L16Qw-1QHuEMrh-29" value="Swing" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="RsPl30L16Qw-1QHuEMrh-2">
+          <mxGeometry x="120" y="70" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="RsPl30L16Qw-1QHuEMrh-9" value="" style="html=1;shadow=0;dashed=0;align=center;verticalAlign=middle;shape=mxgraph.arrows2.arrow;dy=0.6;dx=40;notch=0;fillColor=#808080;" vertex="1" parent="1">
+          <mxGeometry x="210" y="290" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="RsPl30L16Qw-1QHuEMrh-10" value="&lt;b&gt;Common variables found in every sword in the game&lt;/b&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="280" width="140" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="RsPl30L16Qw-1QHuEMrh-11" value="&lt;b&gt;&lt;font style=&quot;font-size: 25px;&quot;&gt;Weapons&lt;/font&gt;&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="140" y="160" width="220" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="RsPl30L16Qw-1QHuEMrh-12" value="Fire Sword" style="swimlane;whiteSpace=wrap;html=1;strokeColor=#FF7E1C;" vertex="1" parent="1">
+          <mxGeometry x="320" y="410" width="280" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="RsPl30L16Qw-1QHuEMrh-13" value="&lt;b&gt;Additional Variables&lt;/b&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="RsPl30L16Qw-1QHuEMrh-12">
+          <mxGeometry y="40" width="140" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="RsPl30L16Qw-1QHuEMrh-14" value="&lt;ul&gt;&lt;li&gt;Weapon Health&lt;/li&gt;&lt;li&gt;Fire persistence&lt;/li&gt;&lt;li&gt;...&lt;/li&gt;&lt;/ul&gt;" style="text;strokeColor=none;fillColor=none;html=1;whiteSpace=wrap;verticalAlign=middle;overflow=hidden;" vertex="1" parent="RsPl30L16Qw-1QHuEMrh-12">
+          <mxGeometry x="-10" y="60" width="135" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="RsPl30L16Qw-1QHuEMrh-24" value="&lt;b&gt;Functions&lt;/b&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="RsPl30L16Qw-1QHuEMrh-12">
+          <mxGeometry x="180" y="40" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="RsPl30L16Qw-1QHuEMrh-15" value="When weapons need to be displayed in the shop, the class variable values can be put on display&lt;br&gt;&lt;b&gt;idea: in the shop, if variable value is an int or float, convert it to:&lt;/b&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="105" width="140" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="RsPl30L16Qw-1QHuEMrh-17" value="" style="line;strokeWidth=2;html=1;" vertex="1" parent="1">
+          <mxGeometry x="680" y="245" width="40" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="RsPl30L16Qw-1QHuEMrh-18" value="" style="line;strokeWidth=2;html=1;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="720" y="245" width="40" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="RsPl30L16Qw-1QHuEMrh-19" value="" style="line;strokeWidth=2;html=1;fillColor=#f5f5f5;strokeColor=#A6A6A6;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="760" y="245" width="40" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="RsPl30L16Qw-1QHuEMrh-21" value="" style="line;strokeWidth=2;html=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="245" width="40" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="RsPl30L16Qw-1QHuEMrh-22" value="&lt;b&gt;Damage:&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="570" y="235" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="RsPl30L16Qw-1QHuEMrh-26" value="Fire Storm?" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="470" y="480" width="120" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
