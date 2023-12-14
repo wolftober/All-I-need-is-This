@@ -36,7 +36,6 @@ public class RoundManager : MonoBehaviour
 
     // UI
     public GameObject intermissionPanel;
-    public GameObject roundCount;
 
     // returns a spawn location for the enemy to originate
     // will be made more advanced later
@@ -122,7 +121,6 @@ public class RoundManager : MonoBehaviour
 
         // add 1 to the round count
         round = round + 1;
-        roundCount.GetComponent<TextMeshProUGUI>().text = "Round : " + round.ToString();
 
         // unfreeze the game if its frozen
         if (Time.timeScale == 0)

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,7 +16,8 @@ public class PlayerManager : MonoBehaviour
     private WeaponParent weaponParent;
     // private FaceMouse pointerPos;
     // UI
-    public GameObject gameOverPanel;
+    public GameObject Canvas;
+    UIManager UIManager;
 
     private void Awake()
     {
@@ -47,7 +49,10 @@ public class PlayerManager : MonoBehaviour
     {
         Debug.Log("Player was killed...");
         Time.timeScale = 0;
-        gameOverPanel.SetActive(true);
+
+        // UI Manager Call
+        UIManager.OpenGameOverMenu();
+
         gameObject.SetActive(false);
     }
 
@@ -63,6 +68,9 @@ public class PlayerManager : MonoBehaviour
         Slider healthSlider = healthBar.GetComponent<Slider>();
         healthSlider.maxValue = health;
         healthSlider.value = health;
+
+        // setting up the UI Manager script
+        UIManager = Canvas.GetComponent<UIManager>();
     }
 
     private void PerformAttack()
