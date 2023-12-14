@@ -8,7 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Ben's Scene.unity
-    guid: ca30db1376b32494e87952824e32fa15
+    guid: bbc1a393a7f35fd44860f7f32be0c431
   m_configObjects: {}
