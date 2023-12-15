@@ -8,6 +8,10 @@ public class UIManager : MonoBehaviour
     public GameObject gameOverPanel;
     public GameObject gameOverPanelHeading;
 
+    // for coin updates
+    public TextMeshProUGUI playerCoinLabel;
+    public TextMeshProUGUI shopCoinLabel;
+
     // these are the various different game over lines the player can see
     List<string> gameOverLines = new List<string>(new string[] {
         "You died!",
@@ -31,5 +35,16 @@ public class UIManager : MonoBehaviour
 
         gameOverPanelHeading.GetComponent<TextMeshProUGUI>().text = randomGameOverLine;
         gameOverPanel.SetActive(true);
+    }
+
+    public void UpdateCoinCount(int newCount)
+    {
+        string coinsAmount = newCount.ToString();
+
+        // update the player display
+        playerCoinLabel.text = coinsAmount;
+
+        // update the shop display
+        shopCoinLabel.text = coinsAmount;
     }
 }

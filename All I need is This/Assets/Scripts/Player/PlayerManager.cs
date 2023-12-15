@@ -8,6 +8,7 @@ public class PlayerManager : MonoBehaviour
 {
     // CONFIGURABLES
     public float health = 200f; // this is player's max health
+    public int coins = 200;
 
     public GameObject healthBar;
     public GameObject safe;
@@ -17,7 +18,7 @@ public class PlayerManager : MonoBehaviour
     // private FaceMouse pointerPos;
     // UI
     public GameObject Canvas;
-    UIManager UIManager;
+    public UIManager UIManager;
 
     private void Awake()
     {
@@ -56,6 +57,21 @@ public class PlayerManager : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    public void AddCoins(int amount)
+    {
+        coins += amount;
+
+        // tell UI manager to update the coin display
+        UIManager.UpdateCoinCount(coins);
+    }
+
+    public void TakeAwayCoins(int amount)
+    {
+        coins -= amount;
+
+        UIManager.UpdateCoinCount(coins);
+    }
+
     public void returnToSafe(int coins)
     {
         SafeManager safem = safe.GetComponent<SafeManager>();
@@ -68,9 +84,6 @@ public class PlayerManager : MonoBehaviour
         Slider healthSlider = healthBar.GetComponent<Slider>();
         healthSlider.maxValue = health;
         healthSlider.value = health;
-
-        // setting up the UI Manager script
-        UIManager = Canvas.GetComponent<UIManager>();
     }
 
     private void PerformAttack()
