@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ShopManager : MonoBehaviour
@@ -11,6 +12,12 @@ public class ShopManager : MonoBehaviour
     public GameObject swordTemplate;
     public GameObject swordContentObject;
 
+    [Header("References")]
+    public UIManager uiManager;
+    public TextMeshProUGUI shopCoinsLabel;
+
+    private int coins = 0;
+
     private void LoadItems()
     {
         // Sword Entries
@@ -21,7 +28,8 @@ public class ShopManager : MonoBehaviour
             Template swordDisplay = template.GetComponent<Template>();
 
             // setting it up
-            swordDisplay.SetSprite(sword.getSwordSprite());
+            swordDisplay.SetSwordName(sword.swordName);
+            swordDisplay.SetSprite(sword.GetSwordSprite());
 
             if (sword.owned)
             {
@@ -33,6 +41,8 @@ public class ShopManager : MonoBehaviour
 
                 swordDisplay.SetPriceLabel(sword.cost.ToString());
                 swordDisplay.DisplayBuySection();
+
+                swordDisplay.SetupBuyButton();
             }
 
             // activating the template
@@ -40,10 +50,46 @@ public class ShopManager : MonoBehaviour
         }
     }
 
+    public (bool result, int coinDiff) BuySword(string swordName)
+    {
+        Debug.Log("buying " + swordName);
+
+        foreach (Sword sword in swords)
+        {
+            if (sword.swordName == swordName)
+            {
+                if (coins >= sword.cost)
+                {
+                    Debug.Log("bought " + swordName + "!");
+                    coins -= sword.cost;
+                    Debug.Log("Coins now at: " + coins);
+
+                    // updating shop coin label
+                    shopCoinsLabel.text = coins.ToString();
+
+                    return (true, 0);
+                }
+                else
+                {
+                    Debug.Log("Insufficient Funds!");
+                    return (false, sword.cost - coins);
+                }
+            }
+        }
+        return (false, 0); // this would be an internal error
+    }
+
     public void Start()
     {
         LoadItems();
     }
+
+    public void SetCoins(int amount)
+    {
+        coins = amount;
+    }
+
+    // -------- Opening and Closing -------- \\
 
     public void OpenShop()
     {
@@ -53,5 +99,6 @@ public class ShopManager : MonoBehaviour
     public void CloseShop()
     {
         gameObject.SetActive(false);
+        uiManager.CoinCountChangeFromShop(coins);
     }
 }

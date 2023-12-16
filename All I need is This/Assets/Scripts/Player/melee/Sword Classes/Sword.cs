@@ -51,7 +51,7 @@ public class Sword : MonoBehaviour
         swordSprite = weaponRenderer.sprite;
     }
 
-    public Sprite getSwordSprite()
+    public Sprite GetSwordSprite()
     {
         return swordSprite;
     }

@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI playerCoinLabel;
     public TextMeshProUGUI shopCoinLabel;
 
+    public PlayerManager playerManager;
     public ShopManager shop;
     private bool shopOpen = false;
 
@@ -40,6 +41,7 @@ public class UIManager : MonoBehaviour
         gameOverPanel.SetActive(true);
     }
 
+    // called by player
     public void UpdateCoinCount(int newCount)
     {
         string coinsAmount = newCount.ToString();
@@ -49,6 +51,18 @@ public class UIManager : MonoBehaviour
 
         // update the shop display
         shopCoinLabel.text = coinsAmount;
+    }
+
+    // called by shop when closing
+    public void CoinCountChangeFromShop(int newCount)
+    {
+        string coinsAmount = newCount.ToString();
+
+        // update the player display
+        playerCoinLabel.text = coinsAmount;
+
+        // update player manager's coin count
+        playerManager.coins = newCount;
     }
 
     public void Update()
@@ -62,6 +76,7 @@ public class UIManager : MonoBehaviour
             }
             else
             {
+                shop.SetCoins(playerManager.coins);
                 shop.OpenShop();
                 shopOpen = true;
             }
