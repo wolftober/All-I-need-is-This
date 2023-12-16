@@ -4,30 +4,49 @@ using UnityEngine;
 
 public class ShopManager : MonoBehaviour
 {
+    [Header("Shop Items")]
     public List<Sword> swords = new List<Sword>();
+
+    [Header("Swords")]
+    public GameObject swordTemplate;
+    public GameObject swordContentObject;
 
     private void LoadItems()
     {
-        // the entries
+        // Sword Entries
         foreach (Sword sword in swords)
         {
-            string exampleEntry = "";
-            exampleEntry += sword.swordName;
+            // instantiating the template
+            GameObject template = Instantiate(swordTemplate, swordContentObject.transform);
+            Template swordDisplay = template.GetComponent<Template>();
+
+            // setting it up
+            swordDisplay.SetSprite(sword.getSwordSprite());
+
             if (sword.owned)
             {
-                exampleEntry += " (Owned)";
+                swordDisplay.SetNameLabel(sword.swordName + " (OWNED)");
             }
             else
             {
-                exampleEntry += $" Costs {sword.cost}";
+                swordDisplay.SetNameLabel(sword.swordName);
+
+                swordDisplay.SetPriceLabel(sword.cost.ToString());
+                swordDisplay.DisplayBuySection();
             }
-            Debug.Log(exampleEntry);
+
+            // activating the template
+            template.SetActive(true);
         }
+    }
+
+    public void Start()
+    {
+        LoadItems();
     }
 
     public void OpenShop()
     {
-        LoadItems();
         gameObject.SetActive(true);
     }
 
