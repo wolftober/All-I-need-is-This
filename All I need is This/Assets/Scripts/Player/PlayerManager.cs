@@ -14,7 +14,7 @@ public class PlayerManager : MonoBehaviour
     public GameObject safe;
     private Vector2 PointerInput;
 
-    private WeaponParent weaponParent;
+    private Sword weaponParent;
     // private FaceMouse pointerPos;
     // UI
     public GameObject Canvas;
@@ -22,7 +22,7 @@ public class PlayerManager : MonoBehaviour
 
     private void Awake()
     {
-        weaponParent = GetComponentInChildren<WeaponParent>();
+        weaponParent = GetComponentInChildren<Sword>();
         // pointerPos = GetComponent<FaceMouse>();
     }
 

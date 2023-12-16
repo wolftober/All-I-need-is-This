@@ -12,6 +12,9 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI playerCoinLabel;
     public TextMeshProUGUI shopCoinLabel;
 
+    public ShopManager shop;
+    private bool shopOpen = false;
+
     // these are the various different game over lines the player can see
     List<string> gameOverLines = new List<string>(new string[] {
         "You died!",
@@ -46,5 +49,22 @@ public class UIManager : MonoBehaviour
 
         // update the shop display
         shopCoinLabel.text = coinsAmount;
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            if (shopOpen)
+            {
+                shop.CloseShop();
+                shopOpen = false;
+            }
+            else
+            {
+                shop.OpenShop();
+                shopOpen = true;
+            }
+        }
     }
 }

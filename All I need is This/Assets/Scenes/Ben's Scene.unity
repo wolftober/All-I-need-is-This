@@ -6118,6 +6118,7 @@ MonoBehaviour:
   gameOverPanelHeading: {fileID: 1351968233}
   playerCoinLabel: {fileID: 316408535}
   shopCoinLabel: {fileID: 1311796551}
+  shop: {fileID: 1347438504}
 --- !u!1 &1199550493
 GameObject:
   m_ObjectHideFlags: 0
@@ -6295,13 +6296,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 1200837757}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98e2addaa92f1d2438f93b3b09c46455, type: 3}
+  m_Script: {fileID: 11500000, guid: 4bed09b2c6b34be47962422d1d0356c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   characterRenderer: {fileID: 1948129368}
   weaponRenderer: {fileID: 1282614093}
   animator: {fileID: 1948129367}
+  damage: 20
   delay: 0.3
+  attackRange: 5
+  knockback: 5
+  criticalHitChance: 0.2
+  minCritDamage: 30
+  maxCritDamage: 35
+  hasLifespan: 0
+  durability: 0
+  swordName: Main Sword
+  owned: 1
+  category: one handed
+  cost: 0
+  requiredLevel: 0
 --- !u!1 &1215178545
 GameObject:
   m_ObjectHideFlags: 0
@@ -7266,6 +7280,7 @@ GameObject:
   - component: {fileID: 1347438503}
   - component: {fileID: 1347438502}
   - component: {fileID: 1347438501}
+  - component: {fileID: 1347438504}
   m_Layer: 5
   m_Name: Shop
   m_TagString: Untagged
@@ -7362,6 +7377,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1347438499}
   m_CullTransparentMesh: 1
+--- !u!114 &1347438504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1347438499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 850e48616ddfe3b4ba241e05012a03ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1351968233
 GameObject:
   m_ObjectHideFlags: 0
