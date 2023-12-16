@@ -14,7 +14,10 @@ public class UIManager : MonoBehaviour
 
     public PlayerManager playerManager;
     public ShopManager shop;
+    public InventoryManager inventory;
+
     private bool shopOpen = false;
+    private bool inventoryOpen = false;
 
     // these are the various different game over lines the player can see
     List<string> gameOverLines = new List<string>(new string[] {
@@ -48,12 +51,9 @@ public class UIManager : MonoBehaviour
 
         // update the player display
         playerCoinLabel.text = coinsAmount;
-
-        // update the shop display
-        shopCoinLabel.text = coinsAmount;
     }
 
-    // called by shop when closing
+    // called by shop
     public void CoinCountChangeFromShop(int newCount)
     {
         string coinsAmount = newCount.ToString();
@@ -65,21 +65,30 @@ public class UIManager : MonoBehaviour
         playerManager.coins = newCount;
     }
 
+    // called by shop manager to update its coin count (UI manager gets it from player manager)
+    public int RequestCoinCount()
+    {
+        return playerManager.coins;
+    }
+
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.G))
         {
-            if (shopOpen)
+            shop.Toggle();
+        }
+        else if (Input.GetKeyDown(KeyCode.I))
+        {
+            if (inventoryOpen)
             {
-                shop.CloseShop();
-                shopOpen = false;
+                inventory.CloseInventory();
             }
             else
             {
-                shop.SetCoins(playerManager.coins);
-                shop.OpenShop();
-                shopOpen = true;
+                inventory.OpenInventory();
             }
+
+            inventoryOpen = !inventoryOpen;
         }
     }
 }
