@@ -51,10 +51,13 @@ public class ShopEntry : MonoBehaviour
     {
         imageObject.GetComponent<Image>().sprite = item.GetSprite(); // icon
         nameLabel.text = item.itemName; // name label
+
+        nameLabel.color = item.nameLabelColor;
+
         priceLabel.text = item.price.ToString(); // price label
         isOwnable = item.isOwnable; // is this item ownable?
         itemCategory = item.itemCategory; // category
-        itemName = item.itemName; // item name, used for shop lookup
+        itemName = item.itemName; // item name, used for shop 
         description.text = item.itemDescription;
 
         gameObject.SetActive(true);

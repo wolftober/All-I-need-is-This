@@ -8,9 +8,11 @@ public class PlayerManager : MonoBehaviour
 {
     // CONFIGURABLES
     public float health = 200f; // this is player's max health
+    private float maxHealth;
     public int coins = 200;
 
     public GameObject healthBar;
+    public Slider healthSlider;
     public GameObject safe;
     private Vector2 PointerInput;
 
@@ -26,13 +28,24 @@ public class PlayerManager : MonoBehaviour
         // pointerPos = GetComponent<FaceMouse>();
     }
 
-    public void takeDamage(float ammount)
+    public void RestoreHealth(float amount)
     {
-        health -= ammount;
+        if (health < maxHealth)
+        {
+            float newHealth = health + amount;
+            if (newHealth > maxHealth) { newHealth = maxHealth; }
+
+            health = newHealth;
+            healthSlider.value = health;
+        }
+    }
+
+    public void takeDamage(float amount)
+    {
+        health -= amount;
 
         // update the health bar UI
-        Slider healthSlider = healthBar.GetComponent<Slider>();
-        healthSlider.value -= ammount;
+        healthSlider.value -= amount;
 
         if (health <= 0)
         {
@@ -81,9 +94,10 @@ public class PlayerManager : MonoBehaviour
     // setup the health bar (if health value is changed, the health bar needs to change as well)
     private void Start()
     {
-        Slider healthSlider = healthBar.GetComponent<Slider>();
         healthSlider.maxValue = health;
         healthSlider.value = health;
+
+        maxHealth = health;
     }
 
     private void PerformAttack()

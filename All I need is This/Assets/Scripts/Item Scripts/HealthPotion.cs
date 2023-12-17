@@ -4,5 +4,16 @@ using UnityEngine;
 
 public class HealthPotion : Item
 {
-    // add activation script or something here (what happened when used in hotbar)
+    public float healingAmount = 20f;
+    public PlayerManager player;
+
+    // when health potion is selected
+    public override void Selected()
+    {
+        Debug.Log("Using health potion");
+
+        player.RestoreHealth(healingAmount);
+
+        Destroy(gameObject);
+    }
 }

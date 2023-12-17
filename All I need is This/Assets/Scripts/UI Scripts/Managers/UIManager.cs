@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
     public PlayerManager playerManager;
     public ShopManager shop;
     public InventoryManager inventory;
+    public HotbarManager hotbar;
 
     private bool shopOpen = false;
     private bool inventoryOpen = false;
@@ -89,6 +90,24 @@ public class UIManager : MonoBehaviour
             }
 
             inventoryOpen = !inventoryOpen;
+        }
+
+        // hotbar
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            hotbar.SwitchTo(0); // box at index 0
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            hotbar.SwitchTo(1);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            hotbar.SwitchTo(2);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            hotbar.SwitchTo(3);
         }
     }
 }

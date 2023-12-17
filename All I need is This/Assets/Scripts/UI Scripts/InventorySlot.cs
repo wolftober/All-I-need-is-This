@@ -9,7 +9,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData)
     {
         // this check should be able to be avoided for stackable items
-        if (transform.childCount == 0 || (transform.parent.gameObject.name == "Item Slots" && transform.childCount == 1))
+        if (transform.childCount == 0)
         {
             GameObject dropped = eventData.pointerDrag;
             DraggableItem draggableItem = dropped.GetComponent<DraggableItem>(); // the script on the item

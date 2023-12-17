@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
-    public GameObject itemBaseObject;
     public Transform itemSlots;
 
     // returns false if there is no space to add item
@@ -17,9 +16,13 @@ public class InventoryManager : MonoBehaviour
             if (slot.childCount == 0)
             {
                 Debug.Log($"Placing in {slot.gameObject.name}");
-                GameObject itemObject = Instantiate(itemBaseObject, slot);
+                GameObject itemObject = Instantiate(item.gameObject, slot);
 
                 itemObject.GetComponent<Image>().sprite = item.GetSprite();
+
+                // adding dragability to the item
+                itemObject.AddComponent<DraggableItem>();
+                itemObject.GetComponent<DraggableItem>().image = itemObject.GetComponent<Image>();
 
                 itemObject.SetActive(true);
 
