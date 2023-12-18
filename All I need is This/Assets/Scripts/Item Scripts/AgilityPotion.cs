@@ -15,7 +15,7 @@ public class AgilityPotion : Item
         player.moveSpeed += moveSpeedIncrease;
 
         // moving the item out of hotbar so that it isn't reused
-        transform.parent = player.transform;
+        transform.SetParent(player.transform);
 
         StartCoroutine(WaitSeconds());
     }
