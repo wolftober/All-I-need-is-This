@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.Progress;
 
-[CreateAssetMenu(menuName = "Item Manager")]
 public class ItemsManager : MonoBehaviour
 {
     [Header("Item Setup")]

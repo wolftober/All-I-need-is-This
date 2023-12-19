@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28f03e222233b354a9df6b4875990457, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 200
+  health: 175.78
   coins: 200
   healthBar: {fileID: 0}
   healthSlider: {fileID: 0}

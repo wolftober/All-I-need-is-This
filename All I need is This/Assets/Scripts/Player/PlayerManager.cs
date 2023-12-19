@@ -6,13 +6,13 @@ using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
+    public PlayerData playerData;
+
     // CONFIGURABLES
     public float health = 200f; // this is player's max health
     private float maxHealth;
     public int coins = 200;
 
-    public GameObject healthBar;
-    public Slider healthSlider;
     public GameObject safe;
     private Vector2 PointerInput;
 
@@ -36,16 +36,12 @@ public class PlayerManager : MonoBehaviour
             if (newHealth > maxHealth) { newHealth = maxHealth; }
 
             health = newHealth;
-            healthSlider.value = health;
         }
     }
 
     public void takeDamage(float amount)
     {
         health -= amount;
-
-        // update the health bar UI
-        healthSlider.value -= amount;
 
         if (health <= 0)
         {
@@ -94,9 +90,6 @@ public class PlayerManager : MonoBehaviour
     // setup the health bar (if health value is changed, the health bar needs to change as well)
     private void Start()
     {
-        healthSlider.maxValue = health;
-        healthSlider.value = health;
-
         maxHealth = health;
     }
 
@@ -111,6 +104,7 @@ public class PlayerManager : MonoBehaviour
             PerformAttack();
         PointerInput = GetPointerInput();
         weaponParent.PointerPosition = PointerInput;
+        playerData.playerHealth = health;
     }
 
     private Vector2 GetPointerInput()
