@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c943c8b07e240ca4fbe674a67c3a0319, type: 3}
   m_Name: Health Potion
   m_EditorClassIdentifier: 
-  itemCategory: Potions
   itemName: Health Potion
+  itemCategory: 0
   nameLabelColor: {r: 0.81960785, g: 0, b: 0, a: 1}
   itemDescription: Contains herbs and a pinch of ruby crystals from the heart of
     the crimson caverns.
   price: 25
   isOwnable: 0
   icon: {fileID: 21300000, guid: 3f61154348debe24aa2ae5d079d4828e, type: 3}
-  itemObject: {fileID: 0}
   player: {fileID: 0}
   displayInShop: 1
+  isLocked: 0
   healingAmount: 20
