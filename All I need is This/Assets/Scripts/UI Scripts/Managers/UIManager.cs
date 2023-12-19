@@ -95,19 +95,19 @@ public class UIManager : MonoBehaviour
         // hotbar
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            hotbar.SwitchTo(0); // box at index 0
+            hotbar.InteractWith(0); // box at index 0
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            hotbar.SwitchTo(1);
+            hotbar.InteractWith(1);
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            hotbar.SwitchTo(2);
+            hotbar.InteractWith(2);
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            hotbar.SwitchTo(3);
+            hotbar.InteractWith(3);
         }
     }
 }

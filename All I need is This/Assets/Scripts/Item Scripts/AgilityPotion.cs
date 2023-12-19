@@ -15,9 +15,9 @@ public class AgilityPotion : Item
         player.moveSpeed += moveSpeedIncrease;
 
         // moving the item out of hotbar so that it isn't reused
-        transform.SetParent(player.transform);
+        // * transform.SetParent(player.transform);
 
-        StartCoroutine(WaitSeconds());
+        // * StartCoroutine(WaitSeconds());
     }
 
     private IEnumerator WaitSeconds()
@@ -26,6 +26,6 @@ public class AgilityPotion : Item
         player.moveSpeed -= moveSpeedIncrease;
         Debug.Log("Back to normal");
 
-        Destroy(gameObject);
+        // * Destroy(gameObject);
     }
 }

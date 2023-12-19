@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Item : MonoBehaviour
+[CreateAssetMenu(fileName = "New Item", menuName = "Item")]
+public class Item : ScriptableObject
 {
-    public string itemCategory;
     public string itemName;
+
+    public enum itemCat
+    {potions, other}
+
+    public itemCat itemCategory;
 
     public Color nameLabelColor = Color.black;
 
@@ -17,16 +22,17 @@ public class Item : MonoBehaviour
 
     public bool isOwnable;
 
-    public GameObject image;
+    public Sprite icon;
 
-    public Sprite GetSprite()
-    {
-        return image.GetComponent<Image>().sprite;
-    }
+    [HideInInspector]
+    public PlayerManager player;
+
+    public bool displayInShop = true; // will this item be available for purchase immediately?
+    public bool isLocked = false;
 
     // this should be overriden by various items to give them functionality
     public virtual void Selected()
     {
-        return;
+        Debug.Log("Base selected method has been used.");
     }
 }

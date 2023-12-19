@@ -8,11 +8,11 @@ using UnityEngine.SocialPlatforms.Impl;
 public class ShopManager : MonoBehaviour
 {
     [Header("Shop Items")]
+    public ItemsManager itemsManager;
+
+    // swords
     public List<Sword> swords = new List<Sword>();
     private Dictionary<string, Sword> swordSelection = new Dictionary<string, Sword>();
-
-    public List<Item> items = new List<Item>();
-    private Dictionary<string, Item> itemSelection = new Dictionary<string, Item>();
 
     [Header("Swords")]
     public GameObject swordTemplate;
@@ -39,12 +39,6 @@ public class ShopManager : MonoBehaviour
         foreach (Sword sword in swords)
         {
             swordSelection.Add(sword.swordName, sword);
-        }
-
-        // items, category sorting should be implemented later
-        foreach (Item item in items)
-        {
-            itemSelection.Add(item.itemName, item);
         }
     }
 
@@ -80,12 +74,15 @@ public class ShopManager : MonoBehaviour
         }
 
         // Item Entries
-        foreach (Item item in items)
+        foreach (Item item in itemsManager.GetAllItems())
         {
-            GameObject template = Instantiate(itemTemplate, itemsContentObject.transform);
-            ShopEntry entry = template.GetComponent<ShopEntry>();
+            if (item.displayInShop)
+            {
+                GameObject template = Instantiate(itemTemplate, itemsContentObject.transform);
+                ShopEntry entry = template.GetComponent<ShopEntry>();
 
-            entry.Setup(item); // passing the item to entry, all setup should be done in the entry script
+                entry.Setup(item); // passing the item to entry, all setup should be done in the entry script
+            }
         }
     }
 
@@ -125,10 +122,10 @@ public class ShopManager : MonoBehaviour
     {
         Debug.Log($"buying '{name}' in category '{category}'");
 
-        if (itemSelection.ContainsKey(name))
-        {
-            Item item = itemSelection[name];
+        (bool itemExists, Item item) = itemsManager.GetItem(name);
 
+        if (itemExists)
+        {
             int fullPrice = item.price * quantity;
 
             if (coins >= fullPrice)

@@ -49,14 +49,14 @@ public class ShopEntry : MonoBehaviour
 
     public void Setup(Item item)
     {
-        imageObject.GetComponent<Image>().sprite = item.GetSprite(); // icon
+        imageObject.GetComponent<Image>().sprite = item.icon; // icon
         nameLabel.text = item.itemName; // name label
 
         nameLabel.color = item.nameLabelColor;
 
         priceLabel.text = item.price.ToString(); // price label
         isOwnable = item.isOwnable; // is this item ownable?
-        itemCategory = item.itemCategory; // category
+        itemCategory = item.itemCategory.ToString(); // category
         itemName = item.itemName; // item name, used for shop 
         description.text = item.itemDescription;
 

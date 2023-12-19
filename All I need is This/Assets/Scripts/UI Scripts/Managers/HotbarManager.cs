@@ -6,15 +6,21 @@ public class HotbarManager : MonoBehaviour
 {
     public Transform itemSlots;
 
-    public void SwitchTo(int boxIndex)
+    public ItemsManager items;
+
+    public void InteractWith(int boxIndex)
     {
         Transform targetBox = itemSlots.GetChild(boxIndex);
 
         if (targetBox.childCount != 0)
         {
-            Item item = targetBox.GetChild(0).GetComponent<Item>();
+            GameObject holderObject = targetBox.GetChild(0).gameObject;
+
+            (bool exists, Item item) = items.GetItem(holderObject.name);
 
             item.Selected();
+
+            Destroy(holderObject);
         }
     }
 }
