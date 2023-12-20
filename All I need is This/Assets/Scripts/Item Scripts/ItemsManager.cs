@@ -11,6 +11,9 @@ public class ItemsManager : MonoBehaviour
     public List<Item> items = new List<Item>();
     private Dictionary<string, Item> itemsMapping = new Dictionary<string, Item>();
 
+    public List<Sword> swords = new List<Sword>();
+    private Dictionary<string, Sword> swordsMapping = new Dictionary<string, Sword>();
+
     private void Start()
     {
         foreach (Item item in items)

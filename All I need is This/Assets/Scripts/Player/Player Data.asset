@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2b071eb73da4a54e80ddcd35087a710, type: 3}
   m_Name: Player Data
   m_EditorClassIdentifier: 
-  playerHealth: 200
-  coins: 89
+  playerHealth: 175.78
+  coins: 125
   xpLevel: 0
   xpPoints: 0
   xpPointsNeeded: 5
