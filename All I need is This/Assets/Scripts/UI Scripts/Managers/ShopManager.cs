@@ -23,6 +23,7 @@ public class ShopManager : MonoBehaviour
     public GameObject itemsContentObject;
 
     [Header("References")]
+    public PlayerData playerData;
     public UIManager uiManager;
     public InventoryManager inventory;
     public TextMeshProUGUI shopCoinsLabel;
@@ -94,15 +95,15 @@ public class ShopManager : MonoBehaviour
         {
             Sword sword = swordSelection[swordName];
 
-            if (coins >= sword.cost)
+            if (playerData.coins >= sword.cost)
             {
                 Debug.Log("bought " + swordName + "!");
-                coins -= sword.cost;
-                uiManager.CoinCountChangeFromShop(coins);
-                Debug.Log("Coins now at: " + coins);
+                playerData.coins -= sword.cost;
+                
+                Debug.Log("Coins now at: " + playerData.coins);
 
                 // updating shop coin label
-                shopCoinsLabel.text = coins.ToString();
+                shopCoinsLabel.text = playerData.coins.ToString();
 
                 return (true, 0);
             }
@@ -128,18 +129,17 @@ public class ShopManager : MonoBehaviour
         {
             int fullPrice = item.price * quantity;
 
-            if (coins >= fullPrice)
+            if (playerData.coins >= fullPrice)
             {
                 Debug.Log("bought " + name + "!");
-                coins -= item.price;
+                playerData.coins -= item.price;
 
                 // send (item) x(quantity) to player inventory
                 inventory.AddItem(item);
 
-                uiManager.CoinCountChangeFromShop(coins);
-                Debug.Log("Coins now at: " + coins);
+                Debug.Log("Coins now at: " + playerData.coins);
 
-                shopCoinsLabel.text = coins.ToString();
+                shopCoinsLabel.text = playerData.coins.ToString();
 
                 return (true, 0);
             }
@@ -160,11 +160,6 @@ public class ShopManager : MonoBehaviour
         SetupShopSelections();
     }
 
-    public void SetCoins(int amount)
-    {
-        coins = amount;
-    }
-
     // -------- Opening and Closing -------- \\
 
     public void Toggle()
@@ -183,7 +178,7 @@ public class ShopManager : MonoBehaviour
 
     public void OpenShop()
     {
-        coins = uiManager.RequestCoinCount();
+        coins = playerData.coins;
         shopCoinsLabel.text = coins.ToString();
 
         gameObject.SetActive(true);
@@ -192,7 +187,5 @@ public class ShopManager : MonoBehaviour
     public void CloseShop()
     {
         gameObject.SetActive(false);
-
-        uiManager.CoinCountChangeFromShop(coins);
     }
 }

@@ -68,24 +68,21 @@ public class PlayerManager : MonoBehaviour
 
     public void AddCoins(int amount)
     {
-        coins += amount;
-
-        // tell UI manager to update the coin display
-        UIManager.UpdateCoinCount(coins);
+        playerData.coins += amount;
     }
 
     public void TakeAwayCoins(int amount)
     {
-        coins -= amount;
-
-        UIManager.UpdateCoinCount(coins);
+        playerData.coins -= amount;
     }
 
+    /*
     public void returnToSafe(int coins)
     {
         SafeManager safem = safe.GetComponent<SafeManager>();
         safem.addCoins(coins);
     }
+    */
 
     // setup the health bar (if health value is changed, the health bar needs to change as well)
     private void Start()
@@ -105,6 +102,12 @@ public class PlayerManager : MonoBehaviour
         PointerInput = GetPointerInput();
         weaponParent.PointerPosition = PointerInput;
         playerData.playerHealth = health;
+
+        // for system testing
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            AddCoins(10);
+        }
     }
 
     private Vector2 GetPointerInput()

@@ -17,7 +17,6 @@ public class UIManager : MonoBehaviour
     public InventoryManager inventory;
     public HotbarManager hotbar;
 
-    private bool shopOpen = false;
     private bool inventoryOpen = false;
 
     // these are the various different game over lines the player can see
@@ -43,33 +42,6 @@ public class UIManager : MonoBehaviour
 
         gameOverPanelHeading.GetComponent<TextMeshProUGUI>().text = randomGameOverLine;
         gameOverPanel.SetActive(true);
-    }
-
-    // called by player
-    public void UpdateCoinCount(int newCount)
-    {
-        string coinsAmount = newCount.ToString();
-
-        // update the player display
-        playerCoinLabel.text = coinsAmount;
-    }
-
-    // called by shop
-    public void CoinCountChangeFromShop(int newCount)
-    {
-        string coinsAmount = newCount.ToString();
-
-        // update the player display
-        playerCoinLabel.text = coinsAmount;
-
-        // update player manager's coin count
-        playerManager.coins = newCount;
-    }
-
-    // called by shop manager to update its coin count (UI manager gets it from player manager)
-    public int RequestCoinCount()
-    {
-        return playerManager.coins;
     }
 
     public void Update()

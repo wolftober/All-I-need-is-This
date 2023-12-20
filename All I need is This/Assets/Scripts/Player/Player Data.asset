@@ -13,4 +13,8 @@ MonoBehaviour:
   m_Name: Player Data
   m_EditorClassIdentifier: 
   playerHealth: 200
-  coins: 200
+  coins: 89
+  xpLevel: 0
+  xpPoints: 0
+  xpPointsNeeded: 5
+  baseNumber: 1.5

@@ -20,7 +20,6 @@ public class CoinScript : MonoBehaviour
             hasCollided = true;
             PlayerManager playerm = collision.gameObject.GetComponent<PlayerManager>();
 
-            // playerm.returnToSafe(coinAmount); --> this is the old call to add coins back to safe
             playerm.AddCoins(coinAmount);
 
             Destroy(gameObject);
