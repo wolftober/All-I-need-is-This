@@ -104,10 +104,12 @@ public class PlayerManager : MonoBehaviour
         playerData.playerHealth = health;
 
         // for system testing
+        /*
         if (Input.GetKeyDown(KeyCode.X))
         {
             AddCoins(10);
         }
+        */
     }
 
     private Vector2 GetPointerInput()

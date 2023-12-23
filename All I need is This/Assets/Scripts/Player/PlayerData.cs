@@ -42,4 +42,11 @@ public class PlayerData : ScriptableObject
     {
         return Mathf.Pow(baseNumber, newLevel) * 10;
     }
+
+    // -------- Coin Functions -------- \\
+
+    public void AddCoins(int amount)
+    {
+        coins += amount;
+    }
 }

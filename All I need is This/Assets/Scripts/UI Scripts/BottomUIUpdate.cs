@@ -11,6 +11,7 @@ public class BottomUIUpdate : MonoBehaviour
     public Slider healthSlider; // health
 
     public Slider xpSlider; // xp
+    public TextMeshProUGUI xpPointsLabel;
     public TextMeshProUGUI levelLabel;
 
     public TextMeshProUGUI coinLabel; // coins
@@ -33,9 +34,13 @@ public class BottomUIUpdate : MonoBehaviour
         healthSlider.value = playerData.playerHealth;
 
         // xp
-        xpSlider.value = playerData.xpPoints;
-        xpSlider.maxValue = playerData.xpPointsNeeded;
-        levelLabel.text = playerData.xpLevel.ToString();
+        float currentPoints = playerData.xpPoints;
+        float pointsNeeded = playerData.xpPointsNeeded;
+
+        xpSlider.value = currentPoints;
+        xpSlider.maxValue = pointsNeeded;
+        xpPointsLabel.text = currentPoints.ToString() + '/' + pointsNeeded;
+        levelLabel.text = "Level " + playerData.xpLevel.ToString();
 
         // coins
         coinLabel.text = playerData.coins.ToString();

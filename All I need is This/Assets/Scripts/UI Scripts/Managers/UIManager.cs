@@ -5,12 +5,13 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+    public PlayerData playerData;
+
     public GameObject gameOverPanel;
     public GameObject gameOverPanelHeading;
 
     // for coin updates
     public TextMeshProUGUI playerCoinLabel;
-    public TextMeshProUGUI shopCoinLabel;
 
     public PlayerManager playerManager;
     public ShopManager shop;
@@ -42,6 +43,16 @@ public class UIManager : MonoBehaviour
 
         gameOverPanelHeading.GetComponent<TextMeshProUGUI>().text = randomGameOverLine;
         gameOverPanel.SetActive(true);
+    }
+
+    public void UpdateCoinCount()
+    {
+        playerCoinLabel.text = playerData.coins.ToString();
+    }
+
+    private void Start()
+    {
+        UpdateCoinCount();
     }
 
     public void Update()

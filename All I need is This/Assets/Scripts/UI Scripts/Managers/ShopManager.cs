@@ -7,8 +7,8 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class ShopManager : MonoBehaviour
 {
-    [Header("Shop Items")]
-    public ItemsManager itemsManager;
+    //[Header("Shop Items")]
+    private ItemsManager itemsManager;
 
     // swords
     public List<Sword> swords = new List<Sword>();
@@ -23,6 +23,7 @@ public class ShopManager : MonoBehaviour
     public GameObject itemsContentObject;
 
     [Header("References")]
+    public GameObject shopContent;
     public PlayerData playerData;
     public UIManager uiManager;
     public InventoryManager inventory;
@@ -123,7 +124,7 @@ public class ShopManager : MonoBehaviour
     {
         Debug.Log($"buying '{name}' in category '{category}'");
 
-        (bool itemExists, Item item) = itemsManager.GetItem(name);
+        (bool itemExists, Item item) = GameObject.FindGameObjectWithTag("Items Manager").GetComponent<ItemsManager>().GetItem(name);
 
         if (itemExists)
         {
@@ -154,8 +155,19 @@ public class ShopManager : MonoBehaviour
         }
     }
 
+    // -------- Runtime Updates -------- \\
+
+    public void UpdateCoinCount()
+    {
+        shopCoinsLabel.text = playerData.coins.ToString();
+    }
+
     public void Start()
     {
+        itemsManager = GameObject.FindGameObjectWithTag("Items Manager").GetComponent<ItemsManager>();
+        Debug.Log(itemsManager);
+
+        UpdateCoinCount();
         LoadItems();
         SetupShopSelections();
     }
@@ -178,14 +190,11 @@ public class ShopManager : MonoBehaviour
 
     public void OpenShop()
     {
-        coins = playerData.coins;
-        shopCoinsLabel.text = coins.ToString();
-
-        gameObject.SetActive(true);
+        shopContent.SetActive(true);
     }
 
     public void CloseShop()
     {
-        gameObject.SetActive(false);
+        shopContent.SetActive(false);
     }
 }
