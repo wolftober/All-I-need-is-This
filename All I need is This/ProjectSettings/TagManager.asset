@@ -7,6 +7,9 @@ TagManager:
   - Coins
   - Enemy
   - Boss
+  - Shop Manager
+  - Player UI
+  - Items Manager
   layers:
   - Default
   - TransparentFX
