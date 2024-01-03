@@ -207,9 +207,8 @@ GameObject:
   m_Component:
   - component: {fileID: 124160542}
   - component: {fileID: 124160544}
-  - component: {fileID: 124160543}
   m_Layer: 5
-  m_Name: Health Bar
+  m_Name: Boss Health Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -236,20 +235,6 @@ RectTransform:
   m_AnchoredPosition: {x: 150, y: -55.245}
   m_SizeDelta: {x: 300, y: 14.51}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &124160543
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 124160541}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4877a26c7822cc644a7d197a4103066d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerData: {fileID: 11400000, guid: 3a572f4bc61d9994983bc7ae59a8c612, type: 2}
-  slider: {fileID: 124160544}
 --- !u!114 &124160544
 MonoBehaviour:
   m_ObjectHideFlags: 0
