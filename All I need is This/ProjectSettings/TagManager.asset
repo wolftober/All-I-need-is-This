@@ -10,6 +10,7 @@ TagManager:
   - Shop Manager
   - Player UI
   - Items Manager
+  - XP Bar
   layers:
   - Default
   - TransparentFX

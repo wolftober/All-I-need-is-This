@@ -13,9 +13,9 @@ public class PlayerData : ScriptableObject
 
     // xp data
     public int xpLevel = 0;
-    public float xpPoints = 0;
+    public int xpPoints = 0;
 
-    public float xpPointsNeeded = 10f;
+    public int xpPointsNeeded = 10;
 
     [Header("Exponential Calcs")]
     public float baseNumber = 20f;
@@ -23,7 +23,7 @@ public class PlayerData : ScriptableObject
 
     // -------- XP Functions -------- \\
 
-    public void AddXP(float points)
+    public void AddXP(int points)
     {
         xpPoints += points;
         Debug.Log($"XP now {xpPoints}");
@@ -38,9 +38,9 @@ public class PlayerData : ScriptableObject
     }
 
     // uses the base number and the new level number and an exponential function to determine new points required
-    float CalculateNewRequiredPoints(int newLevel)
+    int CalculateNewRequiredPoints(int newLevel)
     {
-        return Mathf.Pow(baseNumber, newLevel) * 10;
+        return (int)(Mathf.Pow(baseNumber, newLevel) * 10);
     }
 
     // -------- Coin Functions -------- \\
