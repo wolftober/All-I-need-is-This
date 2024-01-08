@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Player Data
   m_EditorClassIdentifier: 
   playerHealth: 200
-  coins: 30
+  coins: 5
   xpLevel: 0
   xpPoints: 0
   xpPointsNeeded: 10
