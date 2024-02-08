@@ -52,7 +52,10 @@ public class WaveManager : MonoBehaviour
 
         GameObject spawnedEnemy = Instantiate(currentArea.enemy, transform);
         spawnedEnemy.transform.position = randomSpawnPoint + new Vector3(0, 0, -1);
-        spawnedEnemy.GetComponent<DiesOnTouch>().waveManager = this;
+        EnemyScript enemyScript = spawnedEnemy.GetComponent<EnemyScript>();
+        enemyScript.waveManager = this;
+        enemyScript.player = GameObject.FindGameObjectWithTag("Player").transform;
+
         Debug.Log("Instantiated");
         enemiesAlive++;
     }

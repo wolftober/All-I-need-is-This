@@ -19,7 +19,7 @@ public class EnemyScript : MonoBehaviour
     public GameObject CoinSprite; // to display coins on top of red dude when he steals
     public GameObject coinDropPrefab; // to spawn in the coin drop when red dude
 
-    public GameObject enemyManagerObj;
+    public WaveManager waveManager;
     [SerializeField] EnemyHealthBar healthBar;
     [SerializeField] private bool isDead = false;
 
@@ -39,6 +39,8 @@ public class EnemyScript : MonoBehaviour
 
         health -= amount;
 
+        Debug.Log($"Enemy health: {health}");
+
         if(health > 0)
         {
             OnHitWithReference?.Invoke(sender);
@@ -54,12 +56,14 @@ public class EnemyScript : MonoBehaviour
     // IMPORTANT : sends message to round manager telling it to check its enemy left count
     public void die()
     {
-        RoundManager rm = enemyManagerObj.GetComponent<RoundManager>();
+        // coin drop
+        GameObject coinDrop = Instantiate(coinDropPrefab, transform.position, transform.rotation);
+        coinDrop.GetComponent<CoinScript>().playerData = player.gameObject.GetComponent<PlayerManager>().playerData;
 
-        // spawns the coindrop prefab into the scene at the red dude's position
-        Instantiate(coinDropPrefab, transform.position, transform.rotation);
+        // notify wave manager
+        waveManager.AnEnemyHasDied();
+
         Destroy(gameObject);
-        rm.checkEnemyCount();
     }
 
     void Update()
