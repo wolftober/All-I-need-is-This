@@ -44,6 +44,7 @@ public class EnemyScript : MonoBehaviour
         if(health > 0)
         {
             OnHitWithReference?.Invoke(sender);
+            healthBar.UpdateHealthBar(health, maxHealth);
         }
         else
         {
@@ -59,11 +60,11 @@ public class EnemyScript : MonoBehaviour
         // coin drop
         GameObject coinDrop = Instantiate(coinDropPrefab, transform.position, transform.rotation);
         coinDrop.GetComponent<CoinScript>().playerData = player.gameObject.GetComponent<PlayerManager>().playerData;
+        Destroy(gameObject);
 
         // notify wave manager
         waveManager.AnEnemyHasDied();
 
-        Destroy(gameObject);
     }
 
     void Update()
