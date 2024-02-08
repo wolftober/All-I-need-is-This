@@ -40,7 +40,8 @@ public class Bullet : MonoBehaviour
             BossScript bossscript = hitinfo.GetComponent<BossScript>();
             if (bossscript != null)
             {
-                bossscript.takeDamage(damage);
+                //bossscript.GetHit(damage);
+                return;
             }
 
             if (!hitinfo.CompareTag("Coins"))

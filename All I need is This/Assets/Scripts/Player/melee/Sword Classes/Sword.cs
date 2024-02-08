@@ -128,6 +128,16 @@ public class Sword : MonoBehaviour
 
             }
         }
+        foreach (Collider2D collider in Physics2D.OverlapCircleAll(circleOrigin.position, radius))
+        {
+            //Debug.Log(collider.name);
+            BossScript BossHealth;
+            if (BossHealth = collider.GetComponent<BossScript>())
+            {
+                BossHealth.GetHit((int)GetDamage(), transform.parent.gameObject);
+
+            }
+        }
     }
 
     // -------- Applying Damage -------- \\
