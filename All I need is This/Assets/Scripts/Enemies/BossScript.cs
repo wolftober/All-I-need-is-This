@@ -134,43 +134,14 @@ public class BossScript : MonoBehaviour
     {
         // MOVEMENT
 
-        // if red dude hasn't taken coins yet, he will chase something
-        // if he has taken something, he will run away to some base
+        // red dude will default to chasing the player
+        Vector3 targetPos = player.position;
 
-        if (hasTakenCoins == false)
-        {
-            // red dude will default to chasing the player unless the safe is closer
-            Vector3 targetPos = player.position;
+        float distance_to_player = Vector3.Distance(transform.position, player.position);
 
-            float distance_to_player = Vector3.Distance(transform.position, player.position);
-            // float distance_to_safe = Vector3.Distance(transform.position, safe.position);
-            
-            //if (distance_to_safe < distance_to_player)
-            //{
-            //    targetPos = safe.position;
-            //}
-            
+        float step = moveSpeed * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
 
-            float step = moveSpeed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
-        }
-        else
-        {
-            // red dude will try to go back to base where he will despawn
-
-            // calls the enemy manager object script to obtain a destination position
-            BaseManager basem = enemyManagerObj.GetComponent<BaseManager>();
-            Vector3 targetPosition = basem.getTargetPosition(transform.position);
-
-            if (transform.position == targetPosition)
-            {
-                // this occurs when enemy reaches the base
-                die();
-            }
-
-            float step = moveSpeed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

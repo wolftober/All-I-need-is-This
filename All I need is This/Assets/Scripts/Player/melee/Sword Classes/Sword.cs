@@ -13,6 +13,8 @@ public class Sword : MonoBehaviour
     public Vector2 PointerPosition { get; set; }
     public Animator animator;
     private bool attackBlocked;
+    public Transform circleOrigin;
+    public float radius;
 
     // ~ Main Sword Class Variables ~ \\
 
@@ -22,6 +24,7 @@ public class Sword : MonoBehaviour
     public float delay = 0.3f;
     public float attackRange = 5f;
     public float knockback = 5f;
+    public bool isAttacking { get; private set; }
 
     // critical hits
     [Header("Critical Hits")]
@@ -57,9 +60,15 @@ public class Sword : MonoBehaviour
     }
 
     // -------- Pointer Updates -------- \\
+    public void ResetIsAttacking()
+    {
+        isAttacking = false;
+    }
 
     private void Update()
     {
+        if (isAttacking)
+            return;
         Vector2 direction = (PointerPosition - (Vector2)transform.position).normalized;
         transform.right = direction;
 
@@ -91,6 +100,7 @@ public class Sword : MonoBehaviour
         if (attackBlocked)
             return;
         animator.SetTrigger("Attack");
+        isAttacking = true;
         attackBlocked = true;
         StartCoroutine(DelayedAttack());
         Debug.Log("Weapon attacking!");
@@ -106,6 +116,20 @@ public class Sword : MonoBehaviour
         attackBlocked = false;
     }
 
+    public void DetectColliders()
+    {
+        foreach (Collider2D collider in Physics2D.OverlapCircleAll(circleOrigin.position, radius))
+        {
+            //Debug.Log(collider.name);
+            EnemyScript health;
+            if(health = collider.GetComponent<EnemyScript>())
+            {
+                health.GetHit((int) GetDamage(), transform.parent.gameObject);
+
+            }
+        }
+    }
+
     // -------- Applying Damage -------- \\
 
     // returns either normal damage or a critical damage in the critical range
@@ -114,7 +138,7 @@ public class Sword : MonoBehaviour
         if (CheckForCriticalHit())
         {
             Debug.Log("critical hit!");
-            return Random.Range(minCritDamage, maxCritDamage);
+            return (int) Random.Range(minCritDamage, maxCritDamage);
         }
         else
         {
@@ -131,5 +155,12 @@ public class Sword : MonoBehaviour
             return true;
         else
             return false;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.blue;
+        Vector3 position = circleOrigin == null ? Vector3.zero : circleOrigin.position;
+        Gizmos.DrawWireSphere(position, radius);
     }
 }

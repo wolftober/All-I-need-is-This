@@ -26,7 +26,8 @@ public class Bullet : MonoBehaviour
             EnemyScript enemyscript = hitinfo.GetComponent<EnemyScript>();
             if (enemyscript != null)
             {
-                enemyscript.takeDamage(damage);
+                // enemyscript.GetHit(damage);
+                return;
             }
 
             if (!hitinfo.CompareTag("Coins"))
