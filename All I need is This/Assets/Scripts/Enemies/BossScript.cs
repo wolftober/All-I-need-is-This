@@ -140,7 +140,7 @@ public class BossScript : MonoBehaviour
 
     private void spawnEnemy()
     {
-        GameObject spawnedEnemy = Instantiate(enPrefab, new Vector3(this.transform.position.x + Random.Range(-5f, 5), this.transform.position.y + Random.Range(6f, 6), 0), Quaternion.identity);
+        GameObject spawnedEnemy = Instantiate(enPrefab, new Vector3(this.transform.position.x + Random.Range(-4f, 4), this.transform.position.y + Random.Range(4f, 4), 0), Quaternion.identity);
         EnemyScript enemyScript = spawnedEnemy.GetComponent<EnemyScript>();
         enemyScript.player = GameObject.FindGameObjectWithTag("Player").transform;
 
@@ -169,6 +169,7 @@ public class BossScript : MonoBehaviour
         if (playermanager != null)
         {
             playermanager.takeDamage(damage);
+            Debug.Log("Hit you");
         }
     }
 }
