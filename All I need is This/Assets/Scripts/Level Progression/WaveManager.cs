@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
+    public TextMeshProUGUI waveIndicatorLabel;
+
     int enemiesAlive = 0;
-    int waves;
+    int waveIndex = 0;
 
     AreaManager currentArea;
 
@@ -13,9 +16,10 @@ public class WaveManager : MonoBehaviour
 
     public void SetCurrentArea(AreaManager area)
     {
+        waveIndex = 0;
         currentArea = area;
-        waves = currentArea.waves;
-        Debug.Log($"Area: {waves} waves, {currentArea.enemiesPerWave} enemies per wave");
+        Debug.Log($"Area: {currentArea.enemiesPerWave.Count} waves, {currentArea.enemiesPerWave[waveIndex]} in first wave");
+        waveIndicatorLabel.text = "";
     }
 
     public void StartCycle()
@@ -23,32 +27,61 @@ public class WaveManager : MonoBehaviour
         if (!areaStarted)
         {
             areaStarted = true;
-            StartNextWave();
+            Debug.Log("test");
+            StartCoroutine(StartNextWave());
         }
     }
 
-    public void StartNextWave()
+
+    public IEnumerator StartNextWave()
     {
-        Debug.Log($"Spawning {currentArea.enemiesPerWave} enemies.");
-        for (int i = 0; i < currentArea.enemiesPerWave; i++)
+        waveIndicatorLabel.text = $"Wave {waveIndex + 1}: {currentArea.enemiesPerWave[waveIndex]} Enemies Left";
+        Debug.Log($"Spawning {currentArea.enemiesPerWave[waveIndex]} enemies.");
+        for (int i = 0; i < currentArea.enemiesPerWave[waveIndex]; i++)
         {
-            
+            StartCoroutine(SpawnEnemyWithDelay());
+            yield return new WaitForSeconds(currentArea.secondsBetweenEnemySpawns[waveIndex]);
         }
-        enemiesAlive = currentArea.enemiesPerWave;
+    }
+
+    private IEnumerator SpawnEnemyWithDelay()
+    {
+        yield return new WaitForSeconds(currentArea.secondsBetweenEnemySpawns[waveIndex]);
+
+        Vector3 randomSpawnPoint = currentArea.spawnPoints[Random.Range(0, currentArea.spawnPoints.Count - 1)];
+
+        GameObject spawnedEnemy = Instantiate(currentArea.enemy, transform);
+        spawnedEnemy.transform.position = randomSpawnPoint + new Vector3(0, 0, -1);
+        spawnedEnemy.GetComponent<DiesOnTouch>().waveManager = this;
+        Debug.Log("Instantiated");
+        enemiesAlive++;
     }
 
     public void AnEnemyHasDied()
     {
         enemiesAlive--;
         Debug.Log($"An enemy has died, {enemiesAlive} enemies left.");
+        waveIndicatorLabel.text = $"Wave {waveIndex + 1}: {enemiesAlive} Enemies Left";
         if (enemiesAlive == 0) 
         {
-            waves--;
-            Debug.Log($"Waves left is now: {waves}");
-            if (waves == 0)
+            waveIndex++;
+            Debug.Log($"Waves left is now: {currentArea.enemiesPerWave.Count - waveIndex}");
+            if (waveIndex >= currentArea.enemiesPerWave.Count)
             {
                 currentArea.AreaEnded();
+                StartCoroutine(RemoveWaveIndicatorAfterSeconds());
+            }
+            else
+            {
+                StartCoroutine(StartNextWave());
             }
         }
+    }
+
+    private IEnumerator RemoveWaveIndicatorAfterSeconds()
+    {
+        waveIndicatorLabel.text = "Area Complete, doors are open";
+        yield return new WaitForSeconds(5);
+        waveIndicatorLabel.text = "";
     }
 }

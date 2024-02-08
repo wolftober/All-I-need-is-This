@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class AreaManager : MonoBehaviour
@@ -10,9 +11,10 @@ public class AreaManager : MonoBehaviour
     public WaveManager waveManager;
 
     [Header("Wave Data")]
-    public string enemyType = "skeleton";
-    public int enemiesPerWave = 2;
-    public int waves = 1;
+    public GameObject enemy;
+    public List<int> enemiesPerWave = new List<int>(); // should be the same or INCREASING
+    public List<Vector3> spawnPoints = new List<Vector3>();
+    public List<float> secondsBetweenEnemySpawns = new List<float>(); // should be the same or DECREASING
 
     public void BeginArea()
     {

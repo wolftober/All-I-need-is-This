@@ -8,6 +8,12 @@ public class LevelLoader : MonoBehaviour
     public Animator transition;
     public float transitionTime = 0;
 
+    // this is for going back to the title screen
+    public void LoadFirstLevel()
+    {
+        StartCoroutine(LoadLevel(0));
+    }
+
     public void LoadNextLevel()
     {
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1)); // next index in the build
