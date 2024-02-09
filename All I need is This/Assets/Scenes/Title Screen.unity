@@ -1046,6 +1046,10 @@ PrefabInstance:
       propertyPath: m_BlocksRaycasts
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7987324867143863379, guid: defaea2032a09a44eb636bfbda0abd3d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: defaea2032a09a44eb636bfbda0abd3d, type: 3}
 --- !u!1 &488732447

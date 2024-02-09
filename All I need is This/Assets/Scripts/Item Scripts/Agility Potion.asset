@@ -15,12 +15,13 @@ MonoBehaviour:
   itemName: Agility Potion
   itemCategory: 0
   nameLabelColor: {r: 0.008219008, g: 0.8113208, b: 0, a: 1}
-  itemDescription: Gives you a temporary speed boost.
+  itemDescription: Grants unparalleled speed derived from nimble forest creature
+    essence.
   price: 75
   isOwnable: 0
   icon: {fileID: 21300000, guid: 5aa3d80b405a29640977091215d228d3, type: 3}
   player: {fileID: 0}
   displayInShop: 1
   isLocked: 0
-  moveSpeedIncrease: 3
+  moveSpeedIncrease: 5
   playerMovement: {fileID: 0}
