@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bac1d0177c186424bb07434891d96397, type: 3}
   m_Name: Agility Potion
   m_EditorClassIdentifier: 
-  itemName: 
+  itemName: Agility Potion
   itemCategory: 0
-  nameLabelColor: {r: 0, g: 0, b: 0, a: 1}
-  itemDescription: 
-  price: 0
+  nameLabelColor: {r: 0.008219008, g: 0.8113208, b: 0, a: 1}
+  itemDescription: Gives you a temporary speed boost.
+  price: 75
   isOwnable: 0
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 5aa3d80b405a29640977091215d228d3, type: 3}
   player: {fileID: 0}
   displayInShop: 1
   isLocked: 0
-  moveSpeedIncrease: 0
-  player: {fileID: 0}
+  moveSpeedIncrease: 3
+  playerMovement: {fileID: 0}
