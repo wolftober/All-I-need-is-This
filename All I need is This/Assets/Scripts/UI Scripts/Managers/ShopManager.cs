@@ -28,6 +28,7 @@ public class ShopManager : MonoBehaviour
     public UIManager uiManager;
     public InventoryManager inventory;
     public TextMeshProUGUI shopCoinsLabel;
+    public TextMeshProUGUI bottomUICoinLabel;
 
     private int coins = 0;
 
@@ -141,6 +142,7 @@ public class ShopManager : MonoBehaviour
                 Debug.Log("Coins now at: " + playerData.coins);
 
                 shopCoinsLabel.text = playerData.coins.ToString();
+                bottomUICoinLabel.text = playerData.coins.ToString();
 
                 return (true, 0);
             }

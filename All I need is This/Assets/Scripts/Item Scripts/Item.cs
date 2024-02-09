@@ -36,3 +36,10 @@ public class Item : ScriptableObject
         Debug.Log("Base selected method has been used.");
     }
 }
+
+public interface IDuration
+{
+    public float duration { get; }
+
+    public void DurationEnded();
+}
