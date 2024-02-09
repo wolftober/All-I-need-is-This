@@ -13,7 +13,7 @@ public class AreaManager : MonoBehaviour
     [Header("Wave Data")]
     public GameObject enemy;
     public List<int> enemiesPerWave = new List<int>(); // should be the same or INCREASING
-    public List<Vector3> spawnPoints = new List<Vector3>();
+    public List<Transform> spawnPoints = new List<Transform>();
     public List<float> secondsBetweenEnemySpawns = new List<float>(); // should be the same or DECREASING
 
     public void BeginArea()

@@ -9,7 +9,7 @@ public class PlayerManager : MonoBehaviour
     public PlayerData playerData;
 
     // CONFIGURABLES
-    public float health = 200f; // this is player's max health
+    //public float health = 200f; // this is player's max health
     private float maxHealth;
     public int coins = 200;
 
@@ -22,6 +22,8 @@ public class PlayerManager : MonoBehaviour
     public GameObject Canvas;
     public UIManager UIManager;
 
+    public Slider healthSlider;
+
     private void Awake()
     {
         weaponParent = GetComponentInChildren<Sword>();
@@ -30,21 +32,21 @@ public class PlayerManager : MonoBehaviour
 
     public void RestoreHealth(float amount)
     {
-        if (health < maxHealth)
+        if (playerData.playerHealth < maxHealth)
         {
-            float newHealth = health + amount;
+            float newHealth = playerData.playerHealth + amount;
             if (newHealth > maxHealth) { newHealth = maxHealth; }
 
-            health = newHealth;
+            playerData.playerHealth = newHealth;
         }
     }
 
     public void takeDamage(float amount)
     {
-        health -= amount;
-        Debug.Log($"Took damage, health is now {health}");
+        playerData.playerHealth -= amount;
+        Debug.Log($"Took damage, health is now {playerData.playerHealth}");
 
-        if (health <= 0)
+        if (playerData.playerHealth <= 0)
         {
             die();
         }
@@ -88,7 +90,7 @@ public class PlayerManager : MonoBehaviour
     // setup the health bar (if health value is changed, the health bar needs to change as well)
     private void Start()
     {
-        maxHealth = health;
+        maxHealth = playerData.playerHealth;
     }
 
     private void PerformAttack()
@@ -102,7 +104,6 @@ public class PlayerManager : MonoBehaviour
             PerformAttack();
         PointerInput = GetPointerInput();
         weaponParent.PointerPosition = PointerInput;
-        playerData.playerHealth = health;
 
         // for system testing
         /*

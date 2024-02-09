@@ -48,7 +48,7 @@ public class WaveManager : MonoBehaviour
     {
         yield return new WaitForSeconds(currentArea.secondsBetweenEnemySpawns[waveIndex]);
 
-        Vector3 randomSpawnPoint = currentArea.spawnPoints[Random.Range(0, currentArea.spawnPoints.Count - 1)];
+        Vector3 randomSpawnPoint = currentArea.spawnPoints[Random.Range(0, currentArea.spawnPoints.Count - 1)].position;
 
         GameObject spawnedEnemy = Instantiate(currentArea.enemy, transform);
         spawnedEnemy.transform.position = randomSpawnPoint + new Vector3(0, 0, -1);
