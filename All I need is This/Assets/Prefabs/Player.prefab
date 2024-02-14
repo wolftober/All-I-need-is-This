@@ -36,7 +36,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1488525240516836619}
-  - {fileID: 1488525241090184662}
+  - {fileID: 4315377813654841475}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -167,11 +167,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 3a572f4bc61d9994983bc7ae59a8c612, type: 2}
-  health: 200
   coins: 200
   safe: {fileID: 0}
   Canvas: {fileID: 0}
   UIManager: {fileID: 0}
+  healthSlider: {fileID: 0}
 --- !u!95 &1488525240277359103
 Animator:
   serializedVersion: 5
@@ -360,7 +360,7 @@ GameObject:
   - component: {fileID: 1488525241090184662}
   - component: {fileID: 1488525241090184663}
   m_Layer: 0
-  m_Name: WeaponParent
+  m_Name: Main Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -373,14 +373,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1488525241090184661}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1488525240941306596}
-  m_Father: {fileID: 1488525240277359102}
-  m_RootOrder: 1
+  m_Father: {fileID: 4315377813654841475}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1488525241090184663
 MonoBehaviour:
@@ -397,6 +397,8 @@ MonoBehaviour:
   characterRenderer: {fileID: 1488525240277359088}
   weaponRenderer: {fileID: 1488525240941306597}
   animator: {fileID: 1488525240277359103}
+  circleOrigin: {fileID: 0}
+  radius: 0
   damage: 20
   delay: 0.3
   attackRange: 5
@@ -411,3 +413,35 @@ MonoBehaviour:
   category: one handed
   cost: 0
   requiredLevel: 0
+--- !u!1 &7430753929240207178
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4315377813654841475}
+  m_Layer: 0
+  m_Name: Swords
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4315377813654841475
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7430753929240207178}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1488525241090184662}
+  m_Father: {fileID: 1488525240277359102}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
