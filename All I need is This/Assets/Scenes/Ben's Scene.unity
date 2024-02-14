@@ -1978,6 +1978,155 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 502399022486752354, guid: 20076306e61a5844f9fe39903f05a448, type: 3}
   m_PrefabInstance: {fileID: 1944953569}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &346214363
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 346214364}
+  - component: {fileID: 346214367}
+  - component: {fileID: 346214366}
+  - component: {fileID: 346214365}
+  m_Layer: 0
+  m_Name: Weapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &346214364
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346214363}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.6, y: -0.14, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 901203531}
+  m_Father: {fileID: 1195033761}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &346214365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346214363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46e8cfdb07c2ac044ae241477148ab80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnAnimationEventTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1195033762}
+        m_TargetAssemblyTypeName: Sword, Assembly-CSharp
+        m_MethodName: ResetIsAttacking
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnAttackPerformed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1195033762}
+        m_TargetAssemblyTypeName: Sword, Assembly-CSharp
+        m_MethodName: DetectColliders
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!95 &346214366
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346214363}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 31979b1c4e7c95a4fa5108932e7087bc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+--- !u!212 &346214367
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346214363}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 6
+  m_Sprite: {fileID: 21300000, guid: fef78956b6626254da8557264c1f778e, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 2.88, y: 1.62}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!4 &354421083 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1488525240277359102, guid: 982a68fbafa5a3f4885e01f482e8fc81, type: 3}
@@ -3599,7 +3748,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1488525240277359102, guid: 982a68fbafa5a3f4885e01f482e8fc81, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1488525240277359102, guid: 982a68fbafa5a3f4885e01f482e8fc81, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3656,6 +3805,22 @@ PrefabInstance:
     - target: {fileID: 1488525240941306596, guid: 982a68fbafa5a3f4885e01f482e8fc81, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1488525240941306597, guid: 982a68fbafa5a3f4885e01f482e8fc81, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1488525240941306597, guid: 982a68fbafa5a3f4885e01f482e8fc81, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1488525241090184661, guid: 982a68fbafa5a3f4885e01f482e8fc81, type: 3}
+      propertyPath: m_Name
+      value: Main Sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 1488525241090184661, guid: 982a68fbafa5a3f4885e01f482e8fc81, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1488525241090184662, guid: 982a68fbafa5a3f4885e01f482e8fc81, type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -4405,6 +4570,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 559323695}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &901203530
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 901203531}
+  m_Layer: 0
+  m_Name: CircleOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &901203531
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901203530}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.291, y: 0.396, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 346214364}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &921843380 stripped
 Transform:
@@ -6062,6 +6258,70 @@ Transform:
   m_Father: {fileID: 1949481099}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!1 &1195033760
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1195033761}
+  - component: {fileID: 1195033762}
+  m_Layer: 0
+  m_Name: Fire Sword
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1195033761
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195033760}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 346214364}
+  m_Father: {fileID: 1824390426}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1195033762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195033760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: badbe0f179d18624c9ef4c1fd6184e01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterRenderer: {fileID: 1665997799}
+  weaponRenderer: {fileID: 346214367}
+  animator: {fileID: 346214366}
+  circleOrigin: {fileID: 901203531}
+  radius: 1
+  damage: 50
+  delay: 0.3
+  attackRange: 5
+  knockback: 5
+  criticalHitChance: 0.329
+  minCritDamage: 55
+  maxCritDamage: 60
+  hasLifespan: 0
+  durability: 0
+  swordName: Fire Sword
+  owned: 0
+  category: One Handed
+  cost: 600
+  requiredLevel: 0
 --- !u!224 &1196393887 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9143932328598301156, guid: 6d104bcba9f4d52468a4f1f8a8c05b2e, type: 3}
@@ -8023,6 +8283,11 @@ Transform:
   m_Father: {fileID: 622363539}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1665997799 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1488525240277359088, guid: 982a68fbafa5a3f4885e01f482e8fc81, type: 3}
+  m_PrefabInstance: {fileID: 667904444}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1669636026
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9211,6 +9476,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1821867625}
   m_CullTransparentMesh: 1
+--- !u!4 &1824390426 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4315377813654841475, guid: 982a68fbafa5a3f4885e01f482e8fc81, type: 3}
+  m_PrefabInstance: {fileID: 667904444}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1825129234
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11085,7 +11355,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7987324865749539237, guid: defaea2032a09a44eb636bfbda0abd3d, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7987324865749539237, guid: defaea2032a09a44eb636bfbda0abd3d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11280,6 +11550,18 @@ PrefabInstance:
       propertyPath: bottomUICoinLabel
       value: 
       objectReference: {fileID: 680034494}
+    - target: {fileID: 1140666986241223231, guid: 6d104bcba9f4d52468a4f1f8a8c05b2e, type: 3}
+      propertyPath: swords.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1140666986241223231, guid: 6d104bcba9f4d52468a4f1f8a8c05b2e, type: 3}
+      propertyPath: swords.Array.data[0]
+      value: 
+      objectReference: {fileID: 354535565}
+    - target: {fileID: 1140666986241223231, guid: 6d104bcba9f4d52468a4f1f8a8c05b2e, type: 3}
+      propertyPath: swords.Array.data[1]
+      value: 
+      objectReference: {fileID: 1195033762}
     - target: {fileID: 2592843865115804500, guid: 6d104bcba9f4d52468a4f1f8a8c05b2e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
