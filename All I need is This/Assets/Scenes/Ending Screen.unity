@@ -181,7 +181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Duneon Zone Complete
+  m_text: Dungeon Zone Complete
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 50009442c92fc3448b100bdfcf35ede7, type: 2}
   m_sharedMaterial: {fileID: 7643275397403374251, guid: 50009442c92fc3448b100bdfcf35ede7, type: 2}
