@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InventoryManager : MonoBehaviour
+public class InventoryManager : MonoBehaviour, IOpenAndClose
 {
     public GameObject itemObjectReference; // for cloning
     public Transform itemSlots;
+
+    public bool inventoryOpen = false;
 
     // returns false if there is no space to add item
     public bool AddItem(Item item)
@@ -31,6 +33,22 @@ public class InventoryManager : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public bool Toggle()
+    {
+        if (inventoryOpen)
+        {
+            CloseInventory();
+            inventoryOpen = !inventoryOpen;
+            return false;
+        }
+        else
+        {
+            OpenInventory();
+            inventoryOpen = !inventoryOpen;
+            return true;
+        }
     }
 
     public void OpenInventory()

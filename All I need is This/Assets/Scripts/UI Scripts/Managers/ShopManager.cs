@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
-public class ShopManager : MonoBehaviour
+public class ShopManager : MonoBehaviour, IOpenAndClose
 {
     //[Header("Shop Items")]
     private ItemsManager itemsManager;
@@ -32,7 +32,7 @@ public class ShopManager : MonoBehaviour
 
     private int coins = 0;
 
-    private bool shopOpen = false;
+    public bool shopOpen = false;
 
     // this sets item's name --> item script
     // this is so that it can be bought later
@@ -176,18 +176,27 @@ public class ShopManager : MonoBehaviour
 
     // -------- Opening and Closing -------- \\
 
-    public void Toggle()
+    public bool Toggle()
     {
         if (shopOpen)
         {
             CloseShop();
+            shopOpen = !shopOpen;
+            return false;
         }
         else
         {
             OpenShop();
+            shopOpen = !shopOpen;
+            return true;
         }
+    }
 
-        shopOpen = !shopOpen;
+    public void CloseButton()
+    {
+        CloseShop();
+        shopOpen = false;
+        uiManager.RemoveFromOpenedWindows(this);
     }
 
     public void OpenShop()
