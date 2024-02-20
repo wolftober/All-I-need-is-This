@@ -11792,7 +11792,7 @@ PrefabInstance:
       objectReference: {fileID: 1917539459}
     - target: {fileID: 9143932328231175329, guid: 6d104bcba9f4d52468a4f1f8a8c05b2e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Toggle
+      value: CloseButton
       objectReference: {fileID: 0}
     - target: {fileID: 9143932328231175342, guid: 6d104bcba9f4d52468a4f1f8a8c05b2e, type: 3}
       propertyPath: m_AnchorMax.y
