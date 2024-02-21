@@ -20,7 +20,7 @@ public class PlayerManager : MonoBehaviour
     // private FaceMouse pointerPos;
     // UI
     public GameObject Canvas;
-    public UIManager UIManager;
+    public UIManager uiManager;
 
     public Slider healthSlider;
 
@@ -64,7 +64,7 @@ public class PlayerManager : MonoBehaviour
         Time.timeScale = 0;
 
         // UI Manager Call
-        UIManager.OpenGameOverMenu();
+        uiManager.OpenGameOverMenu();
 
         gameObject.SetActive(false);
     }
@@ -100,18 +100,10 @@ public class PlayerManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && uiManager.openedWindows.Count == 0)
             PerformAttack();
         PointerInput = GetPointerInput();
         weaponParent.PointerPosition = PointerInput;
-
-        // for system testing
-        /*
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            AddCoins(10);
-        }
-        */
     }
 
     private Vector2 GetPointerInput()
