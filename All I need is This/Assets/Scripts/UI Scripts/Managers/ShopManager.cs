@@ -56,7 +56,7 @@ public class ShopManager : MonoBehaviour, IOpenAndClose
 
             // setting it up
             swordDisplay.SetSwordName(sword.swordName);
-            swordDisplay.SetSprite(sword.GetSwordSprite());
+            swordDisplay.SetSprite(sword.gameObject.GetComponentInChildren<SpriteRenderer>().sprite);
 
             if (sword.owned)
             {
