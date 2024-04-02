@@ -10,6 +10,7 @@ public class Template : MonoBehaviour
     public GameObject imageObj;
     public GameObject buySection;
     public Button buyButton;
+    public GameObject equipButton;
     public TextMeshProUGUI nameLabel;
     public TextMeshProUGUI priceLabel;
 
@@ -42,6 +43,22 @@ public class Template : MonoBehaviour
         swordName = name;
     }
 
+    public void ShowAsEquipped()
+    {
+        equipButton.SetActive(true);
+        Button button = equipButton.GetComponent<Button>();
+        button.GetComponentInChildren<TextMeshProUGUI>().text = "EQUIPPED";
+        button.interactable = false;
+    }
+
+    public void ShowAsUnequipped()
+    {
+        equipButton.SetActive(true);
+        Button button = equipButton.GetComponent<Button>();
+        button.GetComponentInChildren<TextMeshProUGUI>().text = "EQUIP";
+        button.interactable = true;
+    }
+
     public void Buy()
     {
         // request shop manager to buy sword, if returns true, update the template
@@ -53,6 +70,7 @@ public class Template : MonoBehaviour
             nameLabel.text = newText;
 
             buySection.SetActive(false);
+            equipButton.SetActive(true);
         }
         else
         {
@@ -67,8 +85,19 @@ public class Template : MonoBehaviour
         }
     }
 
+    public void Equip()
+    {
+        Debug.Log("stuff");
+        shop.EquipSword(swordName);
+    }
+
     public void SetupBuyButton()
     {
         buyButton.onClick.AddListener(Buy);
+    }
+
+    public void SetupEquipButton()
+    {
+        equipButton.GetComponent<Button>().onClick.AddListener(Equip);
     }
 }

@@ -46,7 +46,6 @@ public class Sword : MonoBehaviour
     public int cost = 0;
     public int requiredLevel = 0; // decides if sword is locked or grayed-out
 
-
     // -------- Setup and Sprite Access -------- \\
 
     private void Awake()
@@ -102,7 +101,12 @@ public class Sword : MonoBehaviour
         animator.SetTrigger("Attack");
         isAttacking = true;
         attackBlocked = true;
-        StartCoroutine(DelayedAttack());
+        try
+        {
+            StartCoroutine(DelayedAttack());
+        }
+        catch { }
+        
         Debug.Log("Weapon attacking!");
 
         // get damage to use

@@ -5,6 +5,19 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
+// each sword name points to their version of this
+public class SwordData
+{
+    public Sword swordObj;
+    public GameObject swordTemplate;
+
+    public SwordData(Sword s, GameObject t = null)
+    {
+        swordObj = s;
+        swordTemplate = t;
+    }
+}
+
 public class ShopManager : MonoBehaviour, IOpenAndClose
 {
     //[Header("Shop Items")]
@@ -12,7 +25,8 @@ public class ShopManager : MonoBehaviour, IOpenAndClose
 
     // swords
     public List<Sword> swords = new List<Sword>();
-    private Dictionary<string, Sword> swordSelection = new Dictionary<string, Sword>();
+    private Dictionary<string, SwordData> swordSelection = new Dictionary<string, SwordData>();
+    private string currentEquippedSword = "Main Sword";
 
     [Header("Swords")]
     public GameObject swordTemplate;
@@ -25,6 +39,7 @@ public class ShopManager : MonoBehaviour, IOpenAndClose
     [Header("References")]
     public GameObject shopContent;
     public PlayerData playerData;
+    public Transform playerSwordsHolder;
     public UIManager uiManager;
     public InventoryManager inventory;
     public TextMeshProUGUI shopCoinsLabel;
@@ -41,7 +56,7 @@ public class ShopManager : MonoBehaviour, IOpenAndClose
         // swords
         foreach (Sword sword in swords)
         {
-            swordSelection.Add(sword.swordName, sword);
+            swordSelection.Add(sword.swordName, new SwordData(sword));
         }
     }
 
@@ -61,6 +76,12 @@ public class ShopManager : MonoBehaviour, IOpenAndClose
             if (sword.owned)
             {
                 swordDisplay.SetNameLabel(sword.swordName + " (OWNED)");
+
+                if (sword.swordName.Equals(currentEquippedSword))
+                {
+                    swordDisplay.ShowAsEquipped();
+                    swordDisplay.SetupEquipButton();
+                }
             }
             else
             {
@@ -70,10 +91,12 @@ public class ShopManager : MonoBehaviour, IOpenAndClose
                 swordDisplay.DisplayBuySection();
 
                 swordDisplay.SetupBuyButton();
+                swordDisplay.SetupEquipButton();
             }
 
             // activating the template
             template.SetActive(true);
+            swordSelection[sword.swordName].swordTemplate = template;
         }
 
         // Item Entries
@@ -95,7 +118,8 @@ public class ShopManager : MonoBehaviour, IOpenAndClose
 
         if (swordSelection.ContainsKey(swordName))
         {
-            Sword sword = swordSelection[swordName];
+            SwordData swordData = swordSelection[swordName];
+            Sword sword = swordData.swordObj;
 
             if (playerData.coins >= sword.cost)
             {
@@ -119,6 +143,27 @@ public class ShopManager : MonoBehaviour, IOpenAndClose
         {
             return (false, 0); // this would be an internal error
         }
+    }
+
+    public void EquipSword(string newSword)
+    {
+        swordSelection[currentEquippedSword].swordTemplate.GetComponent<Template>().ShowAsUnequipped();
+        swordSelection[newSword].swordTemplate.GetComponent<Template>().ShowAsEquipped();
+
+        foreach (Transform child in playerSwordsHolder)
+        {
+            GameObject sword = child.gameObject;
+            if (sword.name.Equals(currentEquippedSword))
+            {
+                sword.SetActive(false);
+            }
+            else if (sword.name.Equals(newSword))
+            {
+                sword.SetActive(true);
+            }
+        }
+
+        currentEquippedSword = newSword;
     }
 
     public (bool result, int coinDiff) PurchaseItem(string category, string name, int quantity)
@@ -170,8 +215,8 @@ public class ShopManager : MonoBehaviour, IOpenAndClose
         Debug.Log(itemsManager);
 
         UpdateCoinCount();
-        LoadItems();
         SetupShopSelections();
+        LoadItems();
     }
 
     // -------- Opening and Closing -------- \\
