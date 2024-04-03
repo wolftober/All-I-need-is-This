@@ -16,7 +16,8 @@ public class PlayerManager : MonoBehaviour
     public GameObject safe;
     private Vector2 PointerInput;
 
-    private Sword weaponParent;
+    [HideInInspector]
+    public Sword weaponParent;
     // private FaceMouse pointerPos;
     // UI
     public GameObject Canvas;

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using TMPro;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
@@ -39,7 +40,8 @@ public class ShopManager : MonoBehaviour, IOpenAndClose
     [Header("References")]
     public GameObject shopContent;
     public PlayerData playerData;
-    public Transform playerSwordsHolder;
+    public PlayerManager playerManager;
+    public GameObject playerSwordHolder;
     public UIManager uiManager;
     public InventoryManager inventory;
     public TextMeshProUGUI shopCoinsLabel;
@@ -71,6 +73,7 @@ public class ShopManager : MonoBehaviour, IOpenAndClose
 
             // setting it up
             swordDisplay.SetSwordName(sword.swordName);
+            Debug.Log(sword.swordName);
             swordDisplay.SetSprite(sword.gameObject.GetComponentInChildren<SpriteRenderer>().sprite);
 
             if (sword.owned)
@@ -150,16 +153,18 @@ public class ShopManager : MonoBehaviour, IOpenAndClose
         swordSelection[currentEquippedSword].swordTemplate.GetComponent<Template>().ShowAsUnequipped();
         swordSelection[newSword].swordTemplate.GetComponent<Template>().ShowAsEquipped();
 
-        foreach (Transform child in playerSwordsHolder)
+        foreach (Sword sword in playerSwordHolder.GetComponents<Sword>())
         {
-            GameObject sword = child.gameObject;
-            if (sword.name.Equals(currentEquippedSword))
+            if (sword.swordName.Equals(currentEquippedSword)) // old sword script
             {
-                sword.SetActive(false);
+                sword.enabled = false;
+                sword.canUse = false;
             }
-            else if (sword.name.Equals(newSword))
+            else if (sword.swordName.Equals(newSword)) // new sword script
             {
-                sword.SetActive(true);
+                sword.enabled = true;
+                sword.canUse = true;
+                playerManager.weaponParent = sword; // now mouse movement updates will go to the new sword :)
             }
         }
 

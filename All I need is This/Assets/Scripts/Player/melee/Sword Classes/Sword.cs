@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Sword : MonoBehaviour
@@ -46,6 +45,8 @@ public class Sword : MonoBehaviour
     public int cost = 0;
     public int requiredLevel = 0; // decides if sword is locked or grayed-out
 
+    public bool canUse = false;
+
     // -------- Setup and Sprite Access -------- \\
 
     private void Awake()
@@ -66,6 +67,7 @@ public class Sword : MonoBehaviour
 
     private void Update()
     {
+        if (!canUse) return;
         if (isAttacking)
             return;
         Vector2 direction = (PointerPosition - (Vector2)transform.position).normalized;
@@ -96,11 +98,13 @@ public class Sword : MonoBehaviour
 
     public void Attack()
     {
+        if (!canUse) return;
         if (attackBlocked)
             return;
         animator.SetTrigger("Attack");
         isAttacking = true;
         attackBlocked = true;
+        DetectColliders();
         try
         {
             StartCoroutine(DelayedAttack());
@@ -118,6 +122,7 @@ public class Sword : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         attackBlocked = false;
+        ResetIsAttacking();
     }
 
     public void DetectColliders()
@@ -129,7 +134,8 @@ public class Sword : MonoBehaviour
             if(health = collider.GetComponent<EnemyScript>())
             {
                 health.GetHit((int) GetDamage(), transform.parent.gameObject);
-
+                Debug.Log("Hit by " + swordName);
+                Debug.Log(damage);
             }
         }
         foreach (Collider2D collider in Physics2D.OverlapCircleAll(circleOrigin.position, radius))
@@ -138,7 +144,7 @@ public class Sword : MonoBehaviour
             BossScript BossHealth;
             if (BossHealth = collider.GetComponent<BossScript>())
             {
-                BossHealth.GetHit((int)GetDamage(), transform.parent.gameObject);
+                BossHealth.GetHit((int) GetDamage(), transform.parent.gameObject);
 
             }
         }

@@ -1614,11 +1614,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2360729008934600906, guid: c84bb0cb8ade8474cbaae6b957f4d168, type: 3}
   m_PrefabInstance: {fileID: 324642903}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &333249815 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1494517371319255581, guid: 982a68fbafa5a3f4885e01f482e8fc81, type: 3}
-  m_PrefabInstance: {fileID: 667904444}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &335190257
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1715,7 +1710,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1488525241090184663, guid: 982a68fbafa5a3f4885e01f482e8fc81, type: 3}
   m_PrefabInstance: {fileID: 667904444}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1431540019}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4bed09b2c6b34be47962422d1d0356c2, type: 3}
@@ -3282,6 +3277,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1431540021, guid: 982a68fbafa5a3f4885e01f482e8fc81, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1488525240277359090, guid: 982a68fbafa5a3f4885e01f482e8fc81, type: 3}
       propertyPath: safe
       value: 
@@ -3346,13 +3345,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3269873231910026254, guid: 982a68fbafa5a3f4885e01f482e8fc81, type: 3}
+    - target: {fileID: 1488525241090184661, guid: 982a68fbafa5a3f4885e01f482e8fc81, type: 3}
       propertyPath: m_Name
-      value: Swords
+      value: Sword
       objectReference: {fileID: 0}
-    - target: {fileID: 6329939889120320855, guid: 982a68fbafa5a3f4885e01f482e8fc81, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 1488525241090184663, guid: 982a68fbafa5a3f4885e01f482e8fc81, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 982a68fbafa5a3f4885e01f482e8fc81, type: 3}
@@ -5544,17 +5543,6 @@ Transform:
   m_Father: {fileID: 1949481099}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!114 &1195033762 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7140537258585951452, guid: 982a68fbafa5a3f4885e01f482e8fc81, type: 3}
-  m_PrefabInstance: {fileID: 667904444}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: badbe0f179d18624c9ef4c1fd6184e01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1209295506
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6372,6 +6360,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1409728455}
   m_CullTransparentMesh: 1
+--- !u!1 &1431540019 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1488525241090184661, guid: 982a68fbafa5a3f4885e01f482e8fc81, type: 3}
+  m_PrefabInstance: {fileID: 667904444}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1431540021 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1431540021, guid: 982a68fbafa5a3f4885e01f482e8fc81, type: 3}
+  m_PrefabInstance: {fileID: 667904444}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431540019}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: badbe0f179d18624c9ef4c1fd6184e01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1439076944
 GameObject:
   m_ObjectHideFlags: 0
@@ -10402,9 +10406,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1140666986241223231, guid: 6d104bcba9f4d52468a4f1f8a8c05b2e, type: 3}
+      propertyPath: playerManager
+      value: 
+      objectReference: {fileID: 354421087}
+    - target: {fileID: 1140666986241223231, guid: 6d104bcba9f4d52468a4f1f8a8c05b2e, type: 3}
+      propertyPath: playerSwordHolder
+      value: 
+      objectReference: {fileID: 1431540019}
+    - target: {fileID: 1140666986241223231, guid: 6d104bcba9f4d52468a4f1f8a8c05b2e, type: 3}
       propertyPath: playerSwordsHolder
       value: 
-      objectReference: {fileID: 333249815}
+      objectReference: {fileID: 0}
     - target: {fileID: 1140666986241223231, guid: 6d104bcba9f4d52468a4f1f8a8c05b2e, type: 3}
       propertyPath: swords.Array.data[0]
       value: 
@@ -10412,7 +10424,7 @@ PrefabInstance:
     - target: {fileID: 1140666986241223231, guid: 6d104bcba9f4d52468a4f1f8a8c05b2e, type: 3}
       propertyPath: swords.Array.data[1]
       value: 
-      objectReference: {fileID: 1195033762}
+      objectReference: {fileID: 1431540021}
     - target: {fileID: 1274920849023527241, guid: 6d104bcba9f4d52468a4f1f8a8c05b2e, type: 3}
       propertyPath: m_Color.b
       value: 1
